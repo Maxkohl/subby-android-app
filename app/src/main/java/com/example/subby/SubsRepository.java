@@ -17,7 +17,7 @@ public class SubsRepository {
         mAllSubs = mSubDao.getAllSubs();
     }
 
-    LiveData<List<Subscription>> getAllSubs() {
+    public LiveData<List<Subscription>> getAllSubs() {
         return mAllSubs;
     }
 

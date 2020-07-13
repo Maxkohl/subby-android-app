@@ -1,19 +1,34 @@
 package com.example.subby.ui.subs;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SubsModelView extends ViewModel {
+import com.example.subby.SubsRepository;
+import com.example.subby.Subscription;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public SubsModelView() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+public class SubsModelView extends AndroidViewModel {
+
+    private SubsRepository mRepository;
+    private LiveData<List<Subscription>> mAllSubs;
+
+    public SubsModelView(@NonNull Application application) {
+        super(application);
+        mRepository = new SubsRepository(application);
+        mAllSubs = mRepository.getAllSubs();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Subscription>> getAllSubs() {
+        return mAllSubs;
+    }
+
+    public void insert(Subscription sub) {
+        mRepository.insert(sub);
     }
 }
