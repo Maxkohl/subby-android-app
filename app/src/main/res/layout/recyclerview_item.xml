@@ -4,30 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
-<LinearLayout
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
     <TextView
         android:id="@+id/subName"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
         tools:text="Sub Name" />
     <TextView
         android:id="@+id/subPrice"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:text="Price"
-        />
+
+        android:layout_alignParentRight="true" />
     <TextView
         android:id="@+id/subNotes"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subName"
         android:text="Notes"
         />
 
-</LinearLayout>
+</RelativeLayout>
     </androidx.cardview.widget.CardView>
