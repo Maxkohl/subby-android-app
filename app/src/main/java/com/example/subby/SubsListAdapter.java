@@ -7,18 +7,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsViewHolder> {
 
     private LayoutInflater mInflator;
     private List<Subscription> mSubs;
 
-    SubsListAdapter(Context context) {
+    public SubsListAdapter(Context context) {
         mInflator = LayoutInflater.from(context);
     }
 
