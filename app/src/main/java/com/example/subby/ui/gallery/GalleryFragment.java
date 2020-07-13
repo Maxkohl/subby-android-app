@@ -22,7 +22,7 @@ public class GalleryFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         galleryModelView =
                 ViewModelProviders.of(this).get(GalleryModelView.class);
-        View root = inflater.inflate(R.layout.fragment_subscription, container, false);
+        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         final TextView textView = root.findViewById(R.id.text_subscription);
         galleryModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

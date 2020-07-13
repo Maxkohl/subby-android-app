@@ -22,7 +22,7 @@ public class SubsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         subsModelView =
                 ViewModelProviders.of(this).get(SubsModelView.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        View root = inflater.inflate(R.layout.fragment_subs, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
         subsModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

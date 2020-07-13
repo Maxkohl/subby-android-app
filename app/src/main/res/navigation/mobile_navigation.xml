@@ -9,13 +9,13 @@
         android:id="@+id/nav_subs"
         android:name="com.example.subby.ui.subs.SubsFragment"
         android:label="@string/nav_subs"
-        tools:layout="@layout/fragment_subscription" />
+        tools:layout="@layout/fragment_subs" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.subby.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_subscription" />
+        tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
