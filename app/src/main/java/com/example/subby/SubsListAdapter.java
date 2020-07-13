@@ -46,7 +46,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         return 0;
     }
 
-    void setSubs(List<Subscription> subs) {
+    public void setSubs(List<Subscription> subs) {
         mSubs = subs;
         notifyDataSetChanged();
     }

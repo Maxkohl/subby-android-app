@@ -8,13 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.subby.R;
 import com.example.subby.SubsListAdapter;
+import com.example.subby.Subscription;
+
+import java.util.List;
 
 public class SubsFragment extends Fragment {
 
@@ -32,19 +37,21 @@ public class SubsFragment extends Fragment {
         subsModelView =
                 ViewModelProviders.of(this).get(SubsModelView.class);
         View root = inflater.inflate(R.layout.fragment_subs, container, false);
-//        final TextView textView = root.findViewById(R.id.text_home);
-        //TODO Set this to get subscriptions and put into list adapter
-//        subsModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
 
         RecyclerView recyclerView = root.findViewById(R.id.recyclerview);
         final SubsListAdapter adapter = new SubsListAdapter(context);
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setAdapter(adapter);
+
+        //TODO Set this to get subscriptions and put into list adapter
+        subsModelView.getAllSubs().observe(getViewLifecycleOwner(), new Observer<List<Subscription>>() {
+
+            @Override
+            public void onChanged(List<Subscription> subscriptions) {
+                adapter.setSubs(subscriptions);
+            }
+        });
+
         return root;
     }
 }

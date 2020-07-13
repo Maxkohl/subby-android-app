@@ -20,8 +20,7 @@ public class Subscription {
     //TODO Due Date member variable
 
 
-    public Subscription(int subId, @NonNull String subName, double price, String notes) {
-        this.subId = subId;
+    public Subscription(@NonNull String subName, double price, String notes) {
         this.subName = subName;
         this.price = price;
         this.notes = notes;
@@ -43,4 +42,6 @@ public class Subscription {
     public String getNotes() {
         return notes;
     }
+
+    public void setSubId(int id) {subId = id;}
 }
