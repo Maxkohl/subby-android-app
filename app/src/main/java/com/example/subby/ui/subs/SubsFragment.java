@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,11 +51,11 @@ public class SubsFragment extends Fragment {
         subsModelView.getAllSubs().observe(getViewLifecycleOwner(),
                 new Observer<List<Subscription>>() {
 
-            @Override
-            public void onChanged(List<Subscription> subscriptions) {
-                adapter.setSubs(subscriptions);
-            }
-        });
+                    @Override
+                    public void onChanged(List<Subscription> subscriptions) {
+                        adapter.setSubs(subscriptions);
+                    }
+                });
 
         FloatingActionButton fab = root.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -68,5 +69,15 @@ public class SubsFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SUB_REQUEST) {
+            //TODO Add condition to check that resultCode is RESULT_OK here
+            Subscription newSub = new Subscription(data.getStringExtra("name"),
+                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"));
+            subsModelView.insert(newSub);
 
+        }
+    }
 }
