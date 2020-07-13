@@ -62,7 +62,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
             super(itemView);
             subName = itemView.findViewById(R.id.subName);
             subPrice = itemView.findViewById(R.id.subPrice);
-            subNotes = itemView.findViewById(R.id.subPrice);
+            subNotes = itemView.findViewById(R.id.subNotes);
         }
     }
 
