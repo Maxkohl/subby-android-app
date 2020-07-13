@@ -13,11 +13,13 @@
         android:id="@+id/subName"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
         tools:text="Sub Name" />
     <TextView
         android:id="@+id/subPrice"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
         android:text="Price"
         />
     <TextView
