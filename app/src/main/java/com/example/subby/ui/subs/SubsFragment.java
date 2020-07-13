@@ -43,7 +43,6 @@ public class SubsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setAdapter(adapter);
 
-        //TODO Set this to get subscriptions and put into list adapter
         subsModelView.getAllSubs().observe(getViewLifecycleOwner(), new Observer<List<Subscription>>() {
 
             @Override

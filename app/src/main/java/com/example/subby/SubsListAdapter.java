@@ -29,11 +29,13 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
 
     @Override
     public void onBindViewHolder(@NonNull SubsListAdapter.SubsViewHolder holder, int position) {
-        if (mSubs == null) {
+        if (mSubs != null) {
             Subscription current = mSubs.get(position);
-            holder.subItemView.setText(current.getSubName());
+            holder.subName.setText(current.getSubName());
+            holder.subPrice.setText(toString().valueOf(current.getPrice()));
+            holder.subNotes.setText(current.getNotes());
         } else {
-            holder.subItemView.setText("No Subscription");
+            holder.subName.setText("No Subscription");
         }
 
     }
@@ -52,11 +54,15 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
     }
 
     class SubsViewHolder extends RecyclerView.ViewHolder {
-        private final TextView subItemView;
+        private final TextView subName;
+        private final TextView subPrice;
+        private final TextView subNotes;
 
         private SubsViewHolder(@NonNull View itemView) {
             super(itemView);
-            subItemView = itemView.findViewById(R.id.subName);
+            subName = itemView.findViewById(R.id.subName);
+            subPrice = itemView.findViewById(R.id.subPrice);
+            subNotes = itemView.findViewById(R.id.subPrice);
         }
     }
 
