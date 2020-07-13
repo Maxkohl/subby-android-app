@@ -2,7 +2,9 @@ package com.example.subby.ui.subs;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.subby.R;
 import com.example.subby.SubsListAdapter;
 import com.example.subby.Subscription;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -48,6 +51,15 @@ public class SubsFragment extends Fragment {
             @Override
             public void onChanged(List<Subscription> subscriptions) {
                 adapter.setSubs(subscriptions);
+            }
+        });
+
+        FloatingActionButton fab = root.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+
             }
         });
 
