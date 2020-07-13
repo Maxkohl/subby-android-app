@@ -1,4 +1,4 @@
-package com.example.subby.ui.gallery;
+package com.example.subby.ui.subs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +10,7 @@ public class SubsModelView extends ViewModel {
 
     public SubsModelView() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {

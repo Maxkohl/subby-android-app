@@ -11,4 +11,5 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="nav_title_subscriptions">Subscriptions</string>
+    <string name="nav_subs">Subscriptions</string>
 </resources>

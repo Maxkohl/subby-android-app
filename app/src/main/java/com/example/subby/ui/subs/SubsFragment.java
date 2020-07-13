@@ -1,4 +1,4 @@
-package com.example.subby.ui.home;
+package com.example.subby.ui.subs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.subby.R;
 
-public class HomeFragment extends Fragment {
+public class SubsFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private SubsModelView subsModelView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
+        subsModelView =
+                ViewModelProviders.of(this).get(SubsModelView.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        subsModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

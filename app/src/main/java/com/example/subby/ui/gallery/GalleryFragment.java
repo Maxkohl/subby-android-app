@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.subby.R;
 
-public class SubsFragment extends Fragment {
+public class GalleryFragment extends Fragment {
 
-    private SubsModelView subsModelView;
+    private GalleryModelView galleryModelView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        subsModelView =
-                ViewModelProviders.of(this).get(SubsModelView.class);
+        galleryModelView =
+                ViewModelProviders.of(this).get(GalleryModelView.class);
         View root = inflater.inflate(R.layout.fragment_subscription, container, false);
         final TextView textView = root.findViewById(R.id.text_subscription);
-        subsModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        galleryModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
