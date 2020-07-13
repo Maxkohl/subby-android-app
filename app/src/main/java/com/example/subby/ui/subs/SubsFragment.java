@@ -23,7 +23,7 @@ public class SubsFragment extends Fragment {
         subsModelView =
                 ViewModelProviders.of(this).get(SubsModelView.class);
         View root = inflater.inflate(R.layout.fragment_subs, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
+//        final TextView textView = root.findViewById(R.id.text_home);
         //TODO Set this to get subscriptions and put into list adapter
 //        subsModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
 //            @Override
