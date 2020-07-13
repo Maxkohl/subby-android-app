@@ -17,7 +17,7 @@ public class Subscription {
     @NonNull
     private double price;
     private String notes;
-    //TODO Due Date member variable
+    //TODO Due Date,background color?,icon member variable
 
 
     public Subscription(@NonNull String subName, double price, String notes) {

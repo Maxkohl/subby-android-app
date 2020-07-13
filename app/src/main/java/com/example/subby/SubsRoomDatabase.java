@@ -68,6 +68,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... params) {
+            //TODO mDao.deleteAll() was here but I need data to be persistent
             mDao.deleteAll();
 
             for (int i = 0; i < subs.length; i++) {

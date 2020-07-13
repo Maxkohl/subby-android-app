@@ -7,7 +7,6 @@
 <RelativeLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     >
 
@@ -15,8 +14,7 @@
         android:id="@+id/subName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
-        tools:text="Sub Name" />
+        android:text="Sub Name"/>
     <TextView
         android:id="@+id/subPrice"
         android:layout_width="wrap_content"
