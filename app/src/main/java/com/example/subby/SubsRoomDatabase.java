@@ -48,7 +48,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
@@ -58,7 +58,9 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         private final SubsDao mDao;
-        String[] subNames = {"Netflix", "Hulu", "New York Times"};
+        Subscription[] subs = {new Subscription("Netflix", 20.00, "Netflix is good!"),
+                new Subscription("Hulu", 12.00, "Too many ads!"), new Subscription("New York " +
+                "Times", 50.00, "Great morning read.")};
 
         public PopulateDbAsync(SubsRoomDatabase db) {
             mDao = db.subsDao();
@@ -68,8 +70,8 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
         protected Void doInBackground(Void... params) {
             mDao.deleteAll();
 
-            for (int i = 0; i < subNames.length; i++) {
-                Subscription sub = new Subscription(subNames[i],1.00,"Dummy Notes");
+            for (int i = 0; i < subs.length; i++) {
+                Subscription sub = new Subscription(subs[i].getSubName(),subs[i].getPrice(), subs[i].getNotes());
                 mDao.insert(sub);
             }
             return null;
