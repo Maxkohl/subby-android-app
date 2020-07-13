@@ -71,7 +71,8 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
             mDao.deleteAll();
 
             for (int i = 0; i < subs.length; i++) {
-                Subscription sub = new Subscription(subs[i].getSubName(),subs[i].getPrice(), subs[i].getNotes());
+                Subscription sub = new Subscription(subs[i].getSubName(), subs[i].getPrice(),
+                        subs[i].getNotes());
                 mDao.insert(sub);
             }
             return null;
