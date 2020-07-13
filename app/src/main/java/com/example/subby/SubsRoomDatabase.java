@@ -41,7 +41,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     //TODO Change migration strategy?
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            SubsRoomDatabase.class, "subs_database").fallbackToDestructiveMigration().build();
+                            SubsRoomDatabase.class, "subs_database").fallbackToDestructiveMigration().addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }

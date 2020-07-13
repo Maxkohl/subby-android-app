@@ -16,7 +16,7 @@ public interface SubsDao {
     @Query("SELECT * FROM subs_table ORDER BY name ASC")
     LiveData<List<Subscription>> getAllSubs();
 
-    @Query("DELETE * FROM subs_table")
+    @Query("DELETE FROM subs_table")
     void deleteAll();
 
 }
