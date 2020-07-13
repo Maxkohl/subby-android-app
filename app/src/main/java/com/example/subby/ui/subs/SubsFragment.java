@@ -28,6 +28,7 @@ public class SubsFragment extends Fragment {
 
     private SubsModelView subsModelView;
     private Context context;
+    public static final int SUB_REQUEST = 1;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -46,7 +47,8 @@ public class SubsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setAdapter(adapter);
 
-        subsModelView.getAllSubs().observe(getViewLifecycleOwner(), new Observer<List<Subscription>>() {
+        subsModelView.getAllSubs().observe(getViewLifecycleOwner(),
+                new Observer<List<Subscription>>() {
 
             @Override
             public void onChanged(List<Subscription> subscriptions) {
@@ -58,11 +60,13 @@ public class SubsFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-
+                Intent intent = new Intent(view.getContext(), AddSubActivity.class);
+                startActivityForResult(intent, SUB_REQUEST);
             }
         });
 
         return root;
     }
+
+
 }

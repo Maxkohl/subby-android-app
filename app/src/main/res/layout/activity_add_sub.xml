@@ -36,6 +36,7 @@
         android:id="@+id/saveSub"
         android:text="Save Subscription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:onClick="returnSubscription"/>
 
 </LinearLayout>
