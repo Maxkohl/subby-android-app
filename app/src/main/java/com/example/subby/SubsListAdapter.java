@@ -1,6 +1,7 @@
 package com.example.subby;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.subby.ui.subs.SubDetailsActivity;
+
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -17,11 +20,13 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
 
     private LayoutInflater mInflator;
     private List<Subscription> mSubs;
+    private Context mContext;
     DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
 
     public SubsListAdapter(Context context) {
         mInflator = LayoutInflater.from(context);
+        mContext = context;
     }
 
     @NonNull
@@ -81,7 +86,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         notifyDataSetChanged();
     }
 
-    class SubsViewHolder extends RecyclerView.ViewHolder {
+    class SubsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView subName;
         private final TextView subPrice;
         private final TextView subNotes;
@@ -93,6 +98,19 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
             subPrice = itemView.findViewById(R.id.subPrice);
             subNotes = itemView.findViewById(R.id.subNotes);
             subCard = itemView.findViewById(R.id.subCard);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Subscription current = mSubs.get(getAdapterPosition());
+            Intent intent = new Intent(mContext, SubDetailsActivity.class);
+            intent.putExtra("name", current.getSubName());
+            intent.putExtra("price", current.getPrice());
+            intent.putExtra("notes", current.getNotes());
+            intent.putExtra("color", current.getColor());
+            mContext.startActivity(intent);
         }
     }
 
