@@ -11,16 +11,20 @@
         android:padding="8dp"
         android:paddingBottom="16dp"
         android:text="Sub Name"
+        android:textColor="@color/Black"
+        style="@style/TextAppearance.AppCompat.Headline"
         android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
     <TextView
         android:id="@+id/subPriceDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:padding="8dp"
         android:paddingBottom="16dp"
         android:text="Sub Price"
-        android:textColor="?android:textColorSecondary" />
+        android:textColor="@color/Black"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:id="@+id/subNoteDetails"
@@ -29,6 +33,7 @@
         android:layout_below="@id/subNameDetails"
         android:padding="8dp"
         android:paddingBottom="16dp"
-        android:text="Sub details" />
+        android:text="Sub details"
+        android:textColor="@color/Black"/>
 
 </RelativeLayout>
