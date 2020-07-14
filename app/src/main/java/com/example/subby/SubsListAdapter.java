@@ -86,7 +86,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         notifyDataSetChanged();
     }
 
-    class SubsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class SubsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView subName;
         private final TextView subPrice;
         private final TextView subNotes;
