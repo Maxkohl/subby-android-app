@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:text="Price"
+        android:textStyle="bold"
         android:padding="8dp"
         style="@style/TextAppearance.AppCompat.Subhead"
 
