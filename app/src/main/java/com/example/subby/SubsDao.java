@@ -12,12 +12,12 @@ import java.util.List;
 public interface SubsDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Subscription sub);
+    void insertUserSub(Subscription sub);
 
     @Query("SELECT * FROM subs_table ORDER BY name ASC")
-    LiveData<List<Subscription>> getAllSubs();
+    LiveData<List<Subscription>> getAllUserSubs();
 
     @Query("DELETE FROM subs_table")
-    void deleteAll();
+    void deleteAllUserSubs();
 
 }

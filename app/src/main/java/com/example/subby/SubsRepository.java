@@ -14,7 +14,7 @@ public class SubsRepository {
     public SubsRepository(Application application) {
         SubsRoomDatabase db = SubsRoomDatabase.getDatabase(application);
         mSubDao = db.subsDao();
-        mAllSubs = mSubDao.getAllSubs();
+        mAllSubs = mSubDao.getAllUserSubs();
     }
 
     public LiveData<List<Subscription>> getAllSubs() {
@@ -36,7 +36,7 @@ public class SubsRepository {
 
         @Override
         protected Void doInBackground(Subscription... subscriptions) {
-            mAsyncTaskDao.insert(subscriptions[0]);
+            mAsyncTaskDao.insertUserSub(subscriptions[0]);
             return null;
         }
     }
