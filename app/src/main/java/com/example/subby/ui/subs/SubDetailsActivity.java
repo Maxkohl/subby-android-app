@@ -12,10 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.subby.MainActivity;
 import com.example.subby.R;
-
-import org.w3c.dom.Text;
 
 public class SubDetailsActivity extends AppCompatActivity {
 
@@ -23,7 +20,7 @@ public class SubDetailsActivity extends AppCompatActivity {
     private TextView subPrice;
     private TextView subNote;
     private RelativeLayout headerLayout;
-    private SubsModelView subsModelView;
+    private SubsViewModel subsViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +32,8 @@ public class SubDetailsActivity extends AppCompatActivity {
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
 
-        subsModelView =
-                ViewModelProviders.of(this).get(SubsModelView.class);
+        subsViewModel =
+                ViewModelProviders.of(this).get(SubsViewModel.class);
 
         Intent intent = getIntent();
         subName.setText(intent.getStringExtra("name"));
@@ -78,7 +75,7 @@ public class SubDetailsActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         "You have deleted your " + subscriptionName + " subscription"
                         , Toast.LENGTH_LONG).show();
-                subsModelView.deleteSubscription(subscriptionName);
+                subsViewModel.deleteSubscription(subscriptionName);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

@@ -13,12 +13,12 @@ import com.example.subby.Subscription;
 
 import java.util.List;
 
-public class SubsModelView extends AndroidViewModel {
+public class SubsViewModel extends AndroidViewModel {
 
     private SubsRepository mRepository;
     private LiveData<List<Subscription>> mAllSubs;
 
-    public SubsModelView(@NonNull Application application) {
+    public SubsViewModel(@NonNull Application application) {
         super(application);
         mRepository = new SubsRepository(application);
         mAllSubs = mRepository.getAllSubs();

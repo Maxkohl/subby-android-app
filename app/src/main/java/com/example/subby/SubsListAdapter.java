@@ -21,8 +21,6 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
     private LayoutInflater mInflator;
     private List<Subscription> mSubs;
     private Context mContext;
-    DecimalFormat decimalFormat = new DecimalFormat("#.##");
-
 
     public SubsListAdapter(Context context) {
         mInflator = LayoutInflater.from(context);

@@ -1,11 +1,8 @@
 package com.example.subby.ui.subs;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +21,11 @@ import com.example.subby.SubsListAdapter;
 import com.example.subby.Subscription;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Date;
 import java.util.List;
 
 public class SubsFragment extends Fragment {
 
-    private SubsModelView subsModelView;
+    private SubsViewModel subsViewModel;
     private Context context;
     public static final int SUB_REQUEST = 1;
 
@@ -41,8 +37,8 @@ public class SubsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        subsModelView =
-                ViewModelProviders.of(this).get(SubsModelView.class);
+        subsViewModel =
+                ViewModelProviders.of(this).get(SubsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_subs, container, false);
 
         RecyclerView recyclerView = root.findViewById(R.id.recyclerview);
@@ -50,7 +46,7 @@ public class SubsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setAdapter(adapter);
 
-        subsModelView.getAllSubs().observe(getViewLifecycleOwner(),
+        subsViewModel.getAllSubs().observe(getViewLifecycleOwner(),
                 new Observer<List<Subscription>>() {
 
                     @Override
@@ -97,7 +93,7 @@ public class SubsFragment extends Fragment {
             Subscription newSub = new Subscription(data.getStringExtra("name"),
                     Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note")
                     , data.getStringExtra("color"));
-            subsModelView.insert(newSub);
+            subsViewModel.insert(newSub);
         }
     }
 }
