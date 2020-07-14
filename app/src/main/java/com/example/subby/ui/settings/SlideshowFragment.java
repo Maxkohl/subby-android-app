@@ -1,4 +1,4 @@
-package com.example.subby.ui.slideshow;
+package com.example.subby.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
