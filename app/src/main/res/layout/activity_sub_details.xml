@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/subNameDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:paddingBottom="16dp"
+        android:text="Sub Name"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    <TextView
+        android:id="@+id/subPriceDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:paddingBottom="16dp"
+        android:text="Sub Price"
+        android:textColor="?android:textColorSecondary" />
+
+    <TextView
+        android:id="@+id/subNoteDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subNameDetails"
+        android:padding="8dp"
+        android:paddingBottom="16dp"
+        android:text="Sub details" />
+
+</RelativeLayout>
