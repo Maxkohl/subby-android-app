@@ -18,7 +18,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
     private LayoutInflater mInflator;
     private List<Subscription> mSubs;
     DecimalFormat decimalFormat = new DecimalFormat("#.##");
-    float twoDigitsF = Float.valueOf(decimalFormat.format(f));
+
 
     public SubsListAdapter(Context context) {
         mInflator = LayoutInflater.from(context);
@@ -37,7 +37,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         if (mSubs != null) {
             Subscription current = mSubs.get(position);
             holder.subName.setText(current.getSubName());
-            holder.subPrice.setText(toString().valueOf(current.getPrice()));
+            holder.subPrice.setText(String.format("$%.2f", current.getPrice()));
             holder.subNotes.setText(current.getNotes());
             switch (current.getColor()) {
                 case "Red":
