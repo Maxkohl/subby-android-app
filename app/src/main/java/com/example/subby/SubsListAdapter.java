@@ -10,12 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsViewHolder> {
 
     private LayoutInflater mInflator;
     private List<Subscription> mSubs;
+    DecimalFormat decimalFormat = new DecimalFormat("#.##");
+    float twoDigitsF = Float.valueOf(decimalFormat.format(f));
 
     public SubsListAdapter(Context context) {
         mInflator = LayoutInflater.from(context);
@@ -55,6 +58,8 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
                 case "White":
                     holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.White));
                     holder.subName.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
+                    holder.subPrice.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
+                    holder.subNotes.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
                     break;
             }
         } else {

@@ -14,10 +14,13 @@ public interface SubsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertUserSub(Subscription sub);
 
-    @Query("SELECT * FROM subs_table ORDER BY name ASC")
+    @Query("SELECT * FROM subs_table")
     LiveData<List<Subscription>> getAllUserSubs();
 
     @Query("DELETE FROM subs_table")
     void deleteAllUserSubs();
+
+    @Query("DELETE FROM subs_table WHERE name = :name")
+    void deleteSubscription(String name);
 
 }

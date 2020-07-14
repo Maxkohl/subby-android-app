@@ -70,13 +70,13 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... params) {
             //TODO mDao.deleteAll() was here but I need data to be persistent
-            mDao.deleteAllUserSubs();
-
-            for (int i = 0; i < subs.length; i++) {
-                Subscription sub = new Subscription(subs[i].getSubName(), subs[i].getPrice(),
-                        subs[i].getNotes(), subs[i].getColor());
-                mDao.insertUserSub(sub);
-            }
+//            mDao.deleteAllUserSubs();
+//
+//            for (int i = 0; i < subs.length; i++) {
+//                Subscription sub = new Subscription(subs[i].getSubName(), subs[i].getPrice(),
+//                        subs[i].getNotes(), subs[i].getColor());
+//                mDao.insertUserSub(sub);
+//            }
             return null;
         }
     }

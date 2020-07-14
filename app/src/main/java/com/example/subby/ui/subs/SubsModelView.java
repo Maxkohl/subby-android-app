@@ -31,4 +31,8 @@ public class SubsModelView extends AndroidViewModel {
     public void insert(Subscription sub) {
         mRepository.insert(sub);
     }
+
+    public void deleteSubscription(String name) {
+        mRepository.deleteSub(name);
+    }
 }

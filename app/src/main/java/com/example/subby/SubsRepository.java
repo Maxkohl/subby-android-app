@@ -25,6 +25,8 @@ public class SubsRepository {
         new insertAsyncTask(mSubDao).execute(sub);
     }
 
+    public void deleteSub(String name) {new deleteAsyncTask(mSubDao).execute(name);}
+
 
     private class insertAsyncTask extends AsyncTask <Subscription, Void, Void>{
 
@@ -37,6 +39,21 @@ public class SubsRepository {
         @Override
         protected Void doInBackground(Subscription... subscriptions) {
             mAsyncTaskDao.insertUserSub(subscriptions[0]);
+            return null;
+        }
+    }
+
+    private class deleteAsyncTask extends AsyncTask <String, Void, Void>{
+
+        private SubsDao mAsyncTaskDao;
+
+        deleteAsyncTask(SubsDao subsDao) {
+            mAsyncTaskDao = subsDao;
+        }
+
+        @Override
+        protected Void doInBackground(String... name) {
+            mAsyncTaskDao.deleteSubscription(name[0]);
             return null;
         }
     }

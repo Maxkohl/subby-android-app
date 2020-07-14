@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -58,6 +59,24 @@ public class SubsFragment extends Fragment {
                     }
                 });
 
+        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT |
+                ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                                  RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                //TODO Find way to DELETE SUB with name
+//                subsModelView.deleteSubscription(viewHolder.getAdapterPosition());
+                adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+            }
+        });
+        helper.attachToRecyclerView(recyclerView);
+
         FloatingActionButton fab = root.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +95,8 @@ public class SubsFragment extends Fragment {
         if (requestCode == SUB_REQUEST) {
             //TODO Add condition to check that resultCode is RESULT_OK here
             Subscription newSub = new Subscription(data.getStringExtra("name"),
-                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"), data.getStringExtra("color"));
+                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note")
+                    , data.getStringExtra("color"));
             subsModelView.insert(newSub);
         }
     }
