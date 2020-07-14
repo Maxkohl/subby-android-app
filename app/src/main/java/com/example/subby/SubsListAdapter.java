@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -22,7 +23,8 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
 
     @NonNull
     @Override
-    public SubsListAdapter.SubsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SubsListAdapter.SubsViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                                             int viewType) {
         View itemView = mInflator.inflate(R.layout.recyclerview_item, parent, false);
         return new SubsViewHolder(itemView);
     }
@@ -57,12 +59,14 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         private final TextView subName;
         private final TextView subPrice;
         private final TextView subNotes;
+        private final CardView subCard;
 
         private SubsViewHolder(@NonNull View itemView) {
             super(itemView);
             subName = itemView.findViewById(R.id.subName);
             subPrice = itemView.findViewById(R.id.subPrice);
             subNotes = itemView.findViewById(R.id.subNotes);
+            subCard = itemView.findViewById(R.id.subCard);
         }
     }
 
