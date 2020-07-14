@@ -1,11 +1,18 @@
 package com.example.subby.ui.subs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.subby.MainActivity;
 import com.example.subby.R;
 
 import org.w3c.dom.Text;
@@ -15,6 +22,8 @@ public class SubDetailsActivity extends AppCompatActivity {
     private TextView subName;
     private TextView subPrice;
     private TextView subNote;
+    private RelativeLayout headerLayout;
+    private SubsModelView subsModelView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +33,61 @@ public class SubDetailsActivity extends AppCompatActivity {
         subName = findViewById(R.id.subNameDetails);
         subPrice = findViewById(R.id.subPriceDetails);
         subNote = findViewById(R.id.subNoteDetails);
+        headerLayout = findViewById(R.id.header);
 
+        subsModelView =
+                ViewModelProviders.of(this).get(SubsModelView.class);
 
         Intent intent = getIntent();
         subName.setText(intent.getStringExtra("name"));
         subPrice.setText(intent.getStringExtra("price"));
         subNote.setText(intent.getStringExtra("notes"));
+        switch (intent.getStringExtra("color")) {
+            case "Red":
+                headerLayout.setBackgroundColor(getResources().getColor(R.color.Red));
+                break;
+            case "Green":
+                headerLayout.setBackgroundColor(getResources().getColor(R.color.Green));
+                break;
+            case "Blue":
+                headerLayout.setBackgroundColor(getResources().getColor(R.color.Blue));
+                break;
+            case "Purple":
+                headerLayout.setBackgroundColor(getResources().getColor(R.color.Purple));
+                break;
+            case "Yellow":
+                headerLayout.setBackgroundColor(getResources().getColor(R.color.Yellow));
+                break;
+            case "White":
+                headerLayout.setBackgroundColor(getResources().getColor(R.color.White));
+                subName.setTextColor(getResources().getColor(R.color.Black));
+                subPrice.setTextColor(getResources().getColor(R.color.Black));
+                break;
+        }
+
+    }
+
+    public void deleteSubscription(View view) {
+        final String subscriptionName = subName.getText().toString();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Subscription?").setMessage("Are you sure you want to delete your" +
+                " " + subscriptionName + " subscriptions?");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(),
+                        "You have deleted your " + subscriptionName + " subscription"
+                        , Toast.LENGTH_LONG).show();
+                subsModelView.deleteSubscription(subscriptionName);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), "Canceled delete subscription",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show();
     }
 }

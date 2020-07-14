@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="64dp"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/subNameDetails"
         android:layout_width="wrap_content"
@@ -12,6 +19,7 @@
         android:paddingBottom="16dp"
         android:text="Sub Name"
         android:textColor="@color/Black"
+        android:textStyle="bold"
         style="@style/TextAppearance.AppCompat.Headline"
         android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
@@ -19,21 +27,34 @@
         android:id="@+id/subPriceDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:padding="8dp"
         android:paddingBottom="16dp"
         android:text="Sub Price"
         android:textColor="@color/Black"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/subNoteDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/subNameDetails"
+        android:layout_below="@id/header"
         android:padding="8dp"
         android:paddingBottom="16dp"
         android:text="Sub details"
-        android:textColor="@color/Black"/>
+        android:textColor="@color/Black"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        />
+    <Button
+        android:id="@+id/deleteSubs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Subscription"
+        android:onClick="deleteSubscription"
+        app:layout_constraintTop_toBottomOf="@id/subNoteDetails"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
