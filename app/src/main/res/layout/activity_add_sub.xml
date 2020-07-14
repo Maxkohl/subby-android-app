@@ -31,6 +31,15 @@
         android:inputType="textLongMessage"
         android:layout_gravity="center_horizontal"
         />
+
+    <Spinner
+        android:id="@+id/addSubColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        />
+
     <Button
         android:id="@+id/addSubDate"
         android:layout_width="wrap_content"

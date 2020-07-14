@@ -15,4 +15,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="datePicker">datePicker</string>
+
+    <string-array name="color_labels_array">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Purple</item>
+        <item>White</item>
+    </string-array>
 </resources>
