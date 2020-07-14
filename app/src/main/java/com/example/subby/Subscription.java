@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity(tableName = "subs_table")
 public class Subscription {
 
@@ -18,15 +20,16 @@ public class Subscription {
     private double price;
     private String notes;
 
-    private boolean isSubscribed;
+//    private Date dueDate;
+
+//    private boolean isSubscribed;
     //TODO Due Date,background color?,icon member variable
 
 
-    public Subscription(@NonNull String subName, double price, String notes, boolean isSubscribed) {
+    public Subscription(@NonNull String subName, double price, String notes) {
         this.subName = subName;
         this.price = price;
         this.notes = notes;
-        this.isSubscribed = isSubscribed;
     }
 
     public int getSubId() {
@@ -46,9 +49,9 @@ public class Subscription {
         return notes;
     }
 
-    public boolean isSubscribed() {
-        return isSubscribed;
-    }
+//    public boolean isSubscribed() {
+//        return isSubscribed;
+//    }
 
     public void setSubId(int id) {
         subId = id;

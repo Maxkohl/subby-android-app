@@ -23,6 +23,7 @@ import com.example.subby.SubsListAdapter;
 import com.example.subby.Subscription;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.Date;
 import java.util.List;
 
 public class SubsFragment extends Fragment {
@@ -75,7 +76,7 @@ public class SubsFragment extends Fragment {
         if (requestCode == SUB_REQUEST) {
             //TODO Add condition to check that resultCode is RESULT_OK here
             Subscription newSub = new Subscription(data.getStringExtra("name"),
-                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"), data.getBooleanExtra("isSubscribed", true));
+                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"));
             subsModelView.insert(newSub);
         }
     }
