@@ -1,12 +1,14 @@
 package com.example.subby.ui.subs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.subby.DatePickerFragment;
 import com.example.subby.R;
 
 public class AddSubActivity extends AppCompatActivity {
@@ -26,6 +28,7 @@ public class AddSubActivity extends AppCompatActivity {
         mSubPrice = findViewById(R.id.addSubPrice);
         mSubNote = findViewById(R.id.addSubNote);
 
+
     }
 
     public void returnSubscription(View view) {
@@ -40,5 +43,10 @@ public class AddSubActivity extends AppCompatActivity {
         replyIntent.putExtra("isSubscribed", true);
         setResult(RESULT_OK, replyIntent);
         finish();
+    }
+
+    public void showDatePicker(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(),getString(R.string.datePicker));
     }
 }
