@@ -17,13 +17,20 @@
         android:id="@+id/subName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sub Name"/>
+        android:text="Sub Name"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textSize="24dp"
+        android:textColor="@color/White"
+        style="@style/TextAppearance.AppCompat.Subhead"/>
     <TextView
         android:id="@+id/subPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:text="Price"
+        android:padding="8dp"
+        style="@style/TextAppearance.AppCompat.Subhead"
 
         android:layout_alignParentRight="true" />
     <TextView
@@ -32,6 +39,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/subName"
         android:text="Notes"
+        android:padding="8dp"
+        style="@style/TextAppearance.AppCompat.Subhead"
         />
 
 </RelativeLayout>

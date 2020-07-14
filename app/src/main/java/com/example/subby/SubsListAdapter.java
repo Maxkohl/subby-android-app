@@ -38,22 +38,23 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
             holder.subNotes.setText(current.getNotes());
             switch (current.getColor()) {
                 case "Red":
-                    holder.subCard.setBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Red));
+                    holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Red));
                     break;
                 case "Green":
-                    holder.subCard.setBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Green));
+                    holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Green));
                     break;
                 case "Blue":
-                    holder.subCard.setBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Blue));
+                    holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Blue));
                     break;
                 case "Purple":
-                    holder.subCard.setBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Purple));
+                    holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Purple));
                     break;
                 case "Yellow":
-                    holder.subCard.setBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Yellow));
+                    holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Yellow));
                     break;
                 case "White":
-                    holder.subCard.setBackgroundColor(mInflator.getContext().getResources().getColor(R.color.White));
+                    holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.White));
+                    holder.subName.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
                     break;
             }
         } else {

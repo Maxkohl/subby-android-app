@@ -58,6 +58,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         private final SubsDao mDao;
+        //TODO Delete subs array for testing purposes
         Subscription[] subs = {new Subscription("Netflix", 20.00, "Netflix is good!","Red"),
                 new Subscription("Hulu", 12.00, "Too many ads!","Green"), new Subscription("New York " +
                 "Times", 50.00, "Great morning read.", "White")};
