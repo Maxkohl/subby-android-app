@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 
+import com.example.subby.ui.subs.AddSubActivity;
+
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
 
@@ -39,6 +41,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+        AddSubActivity activity = (AddSubActivity) getActivity();
+        activity.processDatePickerResult(year, month, day);
 
     }
 }

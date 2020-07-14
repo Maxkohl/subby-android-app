@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.subby.DatePickerFragment;
 import com.example.subby.R;
@@ -47,6 +48,15 @@ public class AddSubActivity extends AppCompatActivity {
 
     public void showDatePicker(View view) {
         DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(),getString(R.string.datePicker));
+        newFragment.show(getSupportFragmentManager(), getString(R.string.datePicker));
+    }
+
+    public void processDatePickerResult(int year, int month, int day) {
+        String year_string = Integer.toString(year);
+        String month_string = Integer.toString(month);
+        String day_string = Integer.toString(day);
+        String date_message = "Monthly Due Date: " + day_string;
+
+        Toast.makeText(this, date_message, Toast.LENGTH_SHORT).show();
     }
 }
