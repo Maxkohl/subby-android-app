@@ -77,7 +77,6 @@ public class SubsFragment extends Fragment {
             Subscription newSub = new Subscription(data.getStringExtra("name"),
                     Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"), data.getBooleanExtra("isSubscribed", true));
             subsModelView.insert(newSub);
-
         }
     }
 }
