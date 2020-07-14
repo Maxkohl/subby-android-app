@@ -17,13 +17,16 @@ public class Subscription {
     @NonNull
     private double price;
     private String notes;
+
+    private boolean isSubscribed;
     //TODO Due Date,background color?,icon member variable
 
 
-    public Subscription(@NonNull String subName, double price, String notes) {
+    public Subscription(@NonNull String subName, double price, String notes, boolean isSubscribed) {
         this.subName = subName;
         this.price = price;
         this.notes = notes;
+        this.isSubscribed = isSubscribed;
     }
 
     public int getSubId() {
@@ -43,5 +46,11 @@ public class Subscription {
         return notes;
     }
 
-    public void setSubId(int id) {subId = id;}
+    public boolean isSubscribed() {
+        return isSubscribed;
+    }
+
+    public void setSubId(int id) {
+        subId = id;
+    }
 }

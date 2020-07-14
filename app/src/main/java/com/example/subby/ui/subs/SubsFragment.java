@@ -75,7 +75,7 @@ public class SubsFragment extends Fragment {
         if (requestCode == SUB_REQUEST) {
             //TODO Add condition to check that resultCode is RESULT_OK here
             Subscription newSub = new Subscription(data.getStringExtra("name"),
-                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"));
+                    Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note"), data.getBooleanExtra("isSubscribed", true));
             subsModelView.insert(newSub);
 
         }

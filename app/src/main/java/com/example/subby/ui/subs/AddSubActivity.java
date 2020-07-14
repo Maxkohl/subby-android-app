@@ -37,6 +37,7 @@ public class AddSubActivity extends AppCompatActivity {
         replyIntent.putExtra("name", subName);
         replyIntent.putExtra("price", subPrice);
         replyIntent.putExtra("note", subNote);
+        replyIntent.putExtra("isSubscribed", true);
         setResult(RESULT_OK, replyIntent);
         finish();
     }

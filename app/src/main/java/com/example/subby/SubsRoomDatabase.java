@@ -12,7 +12,7 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
-@Database(entities = {Subscription.class}, version = 1, exportSchema = false)
+@Database(entities = {Subscription.class}, version = 2, exportSchema = false)
 public abstract class SubsRoomDatabase extends RoomDatabase {
     public abstract SubsDao subsDao();
 
@@ -58,9 +58,9 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         private final SubsDao mDao;
-        Subscription[] subs = {new Subscription("Netflix", 20.00, "Netflix is good!"),
-                new Subscription("Hulu", 12.00, "Too many ads!"), new Subscription("New York " +
-                "Times", 50.00, "Great morning read.")};
+        Subscription[] subs = {new Subscription("Netflix", 20.00, "Netflix is good!", false),
+                new Subscription("Hulu", 12.00, "Too many ads!", true), new Subscription("New York " +
+                "Times", 50.00, "Great morning read.",true)};
 
         public PopulateDbAsync(SubsRoomDatabase db) {
             mDao = db.subsDao();
@@ -73,7 +73,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
             for (int i = 0; i < subs.length; i++) {
                 Subscription sub = new Subscription(subs[i].getSubName(), subs[i].getPrice(),
-                        subs[i].getNotes());
+                        subs[i].getNotes(),subs[i].isSubscribed());
                 mDao.insertUserSub(sub);
             }
             return null;
