@@ -81,7 +81,6 @@ public class SubsFragment extends Fragment {
                 startActivityForResult(intent, SUB_REQUEST);
             }
         });
-
         return root;
     }
 
