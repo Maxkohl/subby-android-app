@@ -6,7 +6,10 @@ import androidx.fragment.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.subby.DatePickerFragment;
@@ -16,7 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddSubActivity extends AppCompatActivity {
+public class AddSubActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final int SUB_REQUEST = 1;
     private EditText mSubName;
@@ -24,8 +27,7 @@ public class AddSubActivity extends AppCompatActivity {
     private EditText mSubNote;
 
     private Date subDueDate;
-
-
+    private String mSubColor;
 
 
     @Override
@@ -36,6 +38,18 @@ public class AddSubActivity extends AppCompatActivity {
         mSubName = findViewById(R.id.addSubName);
         mSubPrice = findViewById(R.id.addSubPrice);
         mSubNote = findViewById(R.id.addSubNote);
+
+        Spinner spinner = findViewById(R.id.addSubColor);
+        if (spinner != null) {
+            spinner.setOnItemSelectedListener(this);
+        }
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.color_labels_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        if (spinner != null) {
+            spinner.setAdapter(adapter);
+        }
 
 
     }
@@ -50,7 +64,7 @@ public class AddSubActivity extends AppCompatActivity {
         replyIntent.putExtra("price", subPrice);
         replyIntent.putExtra("note", subNote);
         replyIntent.putExtra("isSubscribed", true);
-        replyIntent.putExtra("date", subDueDate);
+        replyIntent.putExtra("color", mSubColor);
         setResult(RESULT_OK, replyIntent);
         finish();
     }
@@ -66,7 +80,7 @@ public class AddSubActivity extends AppCompatActivity {
         String day_string = Integer.toString(day);
         String date_message = "Monthly Due Date: " + day_string;
 
-        SimpleDateFormat  format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {
             subDueDate = format.parse(day_string + "-" + month_string + "-" + year_string);
         } catch (ParseException e) {
@@ -75,5 +89,17 @@ public class AddSubActivity extends AppCompatActivity {
 
 
         Toast.makeText(this, date_message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String spinnerLabel = adapterView.getItemAtPosition(i).toString();
+        mSubColor = spinnerLabel;
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

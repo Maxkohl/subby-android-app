@@ -19,6 +19,7 @@ public class Subscription {
     @NonNull
     private double price;
     private String notes;
+    private String color;
 
 //    private Date dueDate;
 
@@ -26,10 +27,11 @@ public class Subscription {
     //TODO Due Date,background color?,icon member variable
 
 
-    public Subscription(@NonNull String subName, double price, String notes) {
+    public Subscription(@NonNull String subName, double price, String notes, String color) {
         this.subName = subName;
         this.price = price;
         this.notes = notes;
+        this.color = color;
     }
 
     public int getSubId() {
@@ -49,7 +51,11 @@ public class Subscription {
         return notes;
     }
 
-//    public boolean isSubscribed() {
+    public String getColor() {
+        return color;
+    }
+
+    //    public boolean isSubscribed() {
 //        return isSubscribed;
 //    }
 
