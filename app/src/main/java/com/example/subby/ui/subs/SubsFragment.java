@@ -3,9 +3,11 @@ package com.example.subby.ui.subs;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +30,7 @@ public class SubsFragment extends Fragment {
     private SubsViewModel subsViewModel;
     private Context context;
     public static final int SUB_REQUEST = 1;
+    private TextView mTotalSubCost;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -37,6 +40,9 @@ public class SubsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        //TODO mTotalSubCost is NULL figure out whyyyyy
+//        mTotalSubCost = getActivity().findViewById(R.id.totalSubCost);
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_subs, container, false);
@@ -55,22 +61,30 @@ public class SubsFragment extends Fragment {
                     }
                 });
 
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT |
-                ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
-                                  RecyclerView.ViewHolder target) {
-                return false;
-            }
+//        subsViewModel.getTotalCost().observe(getViewLifecycleOwner(),
+//                new Observer<Double>() {
+//                    @Override
+//                    public void onChanged(Double aDouble) {
+//                        mTotalSubCost.setText(aDouble.toString());
+//                    }
+//                });
 
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                //TODO Find way to DELETE SUB with name
+                ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                        ItemTouchHelper.LEFT |
+                                ItemTouchHelper.RIGHT) {
+                    @Override
+                    public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+                                          RecyclerView.ViewHolder target) {
+                        return false;
+                    }
+
+                    @Override
+                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                        //TODO Find way to DELETE SUB with name
 //                subsModelView.deleteSubscription(viewHolder.getAdapterPosition());
-                adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
-            }
-        });
+                        adapter.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    }
+                });
         helper.attachToRecyclerView(recyclerView);
 
         FloatingActionButton fab = root.findViewById(R.id.fab);

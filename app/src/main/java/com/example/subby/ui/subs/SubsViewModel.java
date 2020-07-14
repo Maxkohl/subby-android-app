@@ -35,4 +35,6 @@ public class SubsViewModel extends AndroidViewModel {
     public void deleteSubscription(String name) {
         mRepository.deleteSub(name);
     }
+
+    public LiveData<Double> getTotalCost() { return mRepository.getTotalCost(); }
 }

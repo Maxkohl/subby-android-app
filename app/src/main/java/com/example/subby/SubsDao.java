@@ -24,6 +24,6 @@ public interface SubsDao {
     void deleteSubscription(String name);
 
     @Query("SELECT SUM(price) FROM subs_table")
-    LiveData<Integer> getTotalCost();
+    LiveData<Double> getTotalCost();
 
 }

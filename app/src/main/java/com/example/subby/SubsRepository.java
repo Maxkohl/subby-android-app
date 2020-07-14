@@ -10,11 +10,13 @@ import java.util.List;
 public class SubsRepository {
     private SubsDao mSubDao;
     private LiveData<List<Subscription>> mAllSubs;
+    private LiveData<Double> mTotalCost;
 
     public SubsRepository(Application application) {
         SubsRoomDatabase db = SubsRoomDatabase.getDatabase(application);
         mSubDao = db.subsDao();
         mAllSubs = mSubDao.getAllUserSubs();
+        mTotalCost = mSubDao.getTotalCost();
     }
 
     public LiveData<List<Subscription>> getAllSubs() {
@@ -26,6 +28,8 @@ public class SubsRepository {
     }
 
     public void deleteSub(String name) {new deleteAsyncTask(mSubDao).execute(name);}
+
+    public LiveData<Double> getTotalCost() { return mTotalCost;}
 
 
     private class insertAsyncTask extends AsyncTask <Subscription, Void, Void>{
