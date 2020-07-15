@@ -67,7 +67,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
                     break;
             }
         } else {
-            holder.subName.setText("No Subscription");
+            holder.subName.setText(R.string.no_subscription_message);
         }
 
     }

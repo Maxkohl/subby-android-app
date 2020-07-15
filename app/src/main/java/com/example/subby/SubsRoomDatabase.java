@@ -58,11 +58,6 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         private final SubsDao mDao;
-        //TODO Delete subs array for testing purposes
-        Subscription[] subs = {new Subscription("Netflix", 20.00, "Netflix is great!","Red"),
-                new Subscription("Hulu", 12.00, "Too many ads!","Green"), new Subscription("New York " +
-                "Times", 50.00, "Great morning read.", "White")};
-
         public PopulateDbAsync(SubsRoomDatabase db) {
             mDao = db.subsDao();
         }
@@ -71,12 +66,6 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
         protected Void doInBackground(Void... params) {
             //TODO mDao.deleteAll() was here but I need data to be persistent
 //            mDao.deleteAllUserSubs();
-//
-//            for (int i = 0; i < subs.length; i++) {
-//                Subscription sub = new Subscription(subs[i].getSubName(), subs[i].getPrice(),
-//                        subs[i].getNotes(), subs[i].getColor());
-//                mDao.insertUserSub(sub);
-//            }
             return null;
         }
     }

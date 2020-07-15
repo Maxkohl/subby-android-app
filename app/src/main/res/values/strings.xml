@@ -45,5 +45,21 @@
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="monthly_cost_text">Your Monthly Cost:</string>
+    <string name="monthly_due_date">\"Monthly Due Date: \"</string>
+    <string name="data_parsing_exception_message">An error occured when parsing the date</string>
+    <string name="delete_sub_alert_title">Delete Subscription?</string>
+    <string name="cancel_alert_title">Cancel</string>
+    <string name="ok_alert_title">OK</string>
+    <string name="no_subscription_message">No Subscription</string>
+    <string name="enter_sub_name_hint">Enter Subscription Name</string>
+    <string name="enter_sub_price_hint">Enter Subscription Price</string>
+    <string name="enter_sub_note_hint">Enter Subscription Note</string>
+    <string name="pick_date_bttn">Pick Due Date</string>
+    <string name="save_subscription_bttn">Save Subscription</string>
+    <string name="sub_details_placeholder">Sub details</string>
+    <string name="delete_sub_bttn">Delete Subscription</string>
+    <string name="sub_name_placeholder">Sub Name</string>
+    <string name="price_placeholder">Price</string>
+    <string name="notes_placeholder">Notes</string>
 
 </resources>

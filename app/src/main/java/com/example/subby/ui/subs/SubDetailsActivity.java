@@ -68,9 +68,9 @@ public class SubDetailsActivity extends AppCompatActivity {
     public void deleteSubscription(View view) {
         final String subscriptionName = subName.getText().toString();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete Subscription?").setMessage("Are you sure you want to delete your" +
+        builder.setTitle(R.string.delete_sub_alert_title).setMessage("Are you sure you want to delete your" +
                 " " + subscriptionName + " subscriptions?");
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.ok_alert_title, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 subsViewModel.deleteSubscription(subscriptionName);
@@ -80,7 +80,7 @@ public class SubDetailsActivity extends AppCompatActivity {
                         , Toast.LENGTH_LONG).show();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel_alert_title, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(), "Canceled delete subscription",

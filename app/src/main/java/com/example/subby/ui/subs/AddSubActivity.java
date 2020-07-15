@@ -5,6 +5,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,6 +23,7 @@ import java.util.Date;
 public class AddSubActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     public static final int SUB_REQUEST = 1;
+    private static final String TAG = "AddSubActivity";
     private EditText mSubName;
     private EditText mSubPrice;
     private EditText mSubNote;
@@ -78,12 +80,13 @@ public class AddSubActivity extends AppCompatActivity implements AdapterView.OnI
         String year_string = Integer.toString(year);
         String month_string = Integer.toString(month);
         String day_string = Integer.toString(day);
-        String date_message = "Monthly Due Date: " + day_string;
+        String date_message = getString(R.string.monthly_due_date) + day_string;
 
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         try {
             subDueDate = format.parse(day_string + "-" + month_string + "-" + year_string);
         } catch (ParseException e) {
+            Log.d(TAG, getString(R.string.data_parsing_exception_message));
             e.printStackTrace();
         }
 

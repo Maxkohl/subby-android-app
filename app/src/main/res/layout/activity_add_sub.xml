@@ -9,7 +9,7 @@
         android:id="@+id/addSubName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Subscription Name"
+        android:hint="@string/enter_sub_name_hint"
         android:inputType="textShortMessage"
         android:layout_gravity="center_horizontal"
         />
@@ -17,7 +17,7 @@
         android:id="@+id/addSubPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Subscription Price"
+        android:hint="@string/enter_sub_price_hint"
         android:inputType="numberDecimal"
         android:layout_gravity="center_horizontal"
 
@@ -27,7 +27,7 @@
         android:id="@+id/addSubNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Enter Subscription Note"
+        android:hint="@string/enter_sub_note_hint"
         android:inputType="textLongMessage"
         android:layout_gravity="center_horizontal"
         />
@@ -46,12 +46,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/standard_margin"
-        android:text="Pick Due Date"
+        android:text="@string/pick_date_bttn"
         android:onClick="showDatePicker"/>
 
     <Button
         android:id="@+id/saveSub"
-        android:text="Save Subscription"
+        android:text="@string/save_subscription_bttn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="returnSubscription"/>
