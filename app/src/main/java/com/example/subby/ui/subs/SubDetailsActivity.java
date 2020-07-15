@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.subby.MainActivity;
 import com.example.subby.R;
 
 public class SubDetailsActivity extends AppCompatActivity {
@@ -72,10 +73,11 @@ public class SubDetailsActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                subsViewModel.deleteSubscription(subscriptionName);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 Toast.makeText(getApplicationContext(),
                         "You have deleted your " + subscriptionName + " subscription"
                         , Toast.LENGTH_LONG).show();
-                subsViewModel.deleteSubscription(subscriptionName);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
