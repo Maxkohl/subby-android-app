@@ -40,9 +40,8 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
     public void onBindViewHolder(@NonNull SubsListAdapter.SubsViewHolder holder, int position) {
         if (mSubs != null) {
             Subscription current = mSubs.get(position);
-//            if (!current.isPaid()) {}
             holder.subName.setText(current.getSubName());
-            holder.subPrice.setText(String.format(Locale.US,"$%.2f", current.getPrice()));
+            holder.subPrice.setText(String.format(Locale.US, "$%.2f", current.getPrice()));
             holder.subNotes.setText(current.getNotes());
             switch (current.getColor()) {
                 case "Red":
@@ -67,10 +66,15 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
                     holder.subNotes.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
                     break;
             }
+            //If subscription is PAID, will not show in recycler view
+            if (current.isPaid()) {
+                holder.subCard.setVisibility(View.GONE);
+            } else {
+                holder.subCard.setVisibility(View.VISIBLE);
+            }
         } else {
             holder.subName.setText(R.string.no_subscription_message);
         }
-
     }
 
     @Override
