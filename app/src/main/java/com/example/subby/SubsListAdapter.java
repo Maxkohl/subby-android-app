@@ -118,5 +118,9 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         }
     }
 
+    public Subscription getSubAtPosition(int position) {
+        return mSubs.get(position);
+    }
+
 
 }

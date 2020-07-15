@@ -31,6 +31,8 @@ public class SubsRepository {
 
     public LiveData<Double> getTotalCost() { return mTotalCost;}
 
+    public void updateSubPaid(Subscription sub) {new updateAsyncTask(mSubDao).execute(sub);}
+
 
     private class insertAsyncTask extends AsyncTask <Subscription, Void, Void>{
 
@@ -60,5 +62,20 @@ public class SubsRepository {
             mAsyncTaskDao.deleteSubscription(name[0]);
             return null;
         }
+    }
+
+    private class updateAsyncTask extends AsyncTask<Subscription, Void, Void>{
+        private SubsDao mASyncTaskDao;
+
+        updateAsyncTask(SubsDao subsDao) {mASyncTaskDao = subsDao;}
+
+        @Override
+        protected Void doInBackground(Subscription... subscriptions) {
+            Subscription current = subscriptions[0];
+            current.setPaid(true);
+            mASyncTaskDao.updateSubPaid(current);
+            return null;
+        }
+
     }
 }

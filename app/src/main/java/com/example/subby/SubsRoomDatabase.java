@@ -58,6 +58,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
 
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         private final SubsDao mDao;
+
         public PopulateDbAsync(SubsRoomDatabase db) {
             mDao = db.subsDao();
         }

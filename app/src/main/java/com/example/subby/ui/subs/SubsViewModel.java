@@ -37,4 +37,6 @@ public class SubsViewModel extends AndroidViewModel {
     }
 
     public LiveData<Double> getTotalCost() { return mRepository.getTotalCost(); }
+
+    public void updateSubPaid(Subscription subscription) { mRepository.updateSubPaid(subscription);}
 }
