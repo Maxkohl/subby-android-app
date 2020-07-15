@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="64dp"
-        android:orientation="horizontal">
-    <TextView
-        android:id="@+id/subNameDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:paddingBottom="16dp"
-        android:text="Sub Name"
-        android:textColor="@color/Black"
-        android:textStyle="bold"
-        style="@style/TextAppearance.AppCompat.Headline"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+        android:orientation="horizontal"
+        android:paddingTop="64dp">
 
-    <TextView
-        android:id="@+id/subPriceDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:paddingBottom="16dp"
-        android:text="Sub Price"
-        android:textColor="@color/Black"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        <TextView
+            android:id="@+id/subNameDetails"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:paddingBottom="16dp"
+            android:text="Sub Name"
+            android:textColor="@color/Black"
+            android:textStyle="bold"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+        <TextView
+            android:id="@+id/subPriceDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:paddingBottom="16dp"
+            android:text="Sub Price"
+            android:textColor="@color/Black" />
     </RelativeLayout>
 
     <TextView
@@ -44,17 +45,16 @@
         android:paddingBottom="16dp"
         android:text="@string/sub_details_placeholder"
         android:textColor="@color/Black"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        />
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
     <Button
         android:id="@+id/deleteSubs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete_sub_bttn"
         android:onClick="deleteSubscription"
-        app:layout_constraintTop_toBottomOf="@id/subNoteDetails"
+        android:text="@string/delete_sub_bttn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/subNoteDetails" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
