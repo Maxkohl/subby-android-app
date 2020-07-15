@@ -33,9 +33,7 @@ public class SubsRepository {
 
 
     private class insertAsyncTask extends AsyncTask <Subscription, Void, Void>{
-
         private SubsDao mAsyncTaskDao;
-
         insertAsyncTask(SubsDao subsDao) {
             mAsyncTaskDao = subsDao;
         }
@@ -48,9 +46,7 @@ public class SubsRepository {
     }
 
     private class deleteAsyncTask extends AsyncTask <String, Void, Void>{
-
         private SubsDao mAsyncTaskDao;
-
         deleteAsyncTask(SubsDao subsDao) {
             mAsyncTaskDao = subsDao;
         }
@@ -64,7 +60,6 @@ public class SubsRepository {
 
     private class updateAsyncTask extends AsyncTask<Subscription, Void, Void>{
         private SubsDao mASyncTaskDao;
-
         updateAsyncTask(SubsDao subsDao) {mASyncTaskDao = subsDao;}
 
         @Override
