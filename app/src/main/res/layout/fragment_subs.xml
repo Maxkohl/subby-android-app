@@ -29,17 +29,21 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/userMonthlyCostText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Monthly Cost: "
+            android:text="@string/monthly_cost_text"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textStyle="bold"
             android:layout_gravity="center_horizontal"/>
         <TextView
             android:id="@+id/totalSubCost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FILLER TEXT"
             android:layout_gravity="center_horizontal"
-            style="@style/TextAppearance.AppCompat.Subhead"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textStyle="bold"
+            android:textColor="@color/Green"
             />
 
     </LinearLayout>
