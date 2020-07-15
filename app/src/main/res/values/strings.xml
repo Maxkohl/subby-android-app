@@ -63,5 +63,6 @@
     <string name="notes_placeholder">Notes</string>
     <string name="nav_paid_subs">Paid Subscriptions</string>
     <string name="nav_settings">Settings</string>
+    <string name="nav_header_app_title">Subby!</string>
 
 </resources>
