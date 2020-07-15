@@ -15,7 +15,7 @@ public interface SubsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertUserSub(Subscription sub);
 
-    @Query("SELECT * FROM subs_table")
+    @Query("SELECT * FROM subs_table ORDER BY paid")
     LiveData<List<Subscription>> getAllUserSubs();
 
     @Query("DELETE FROM subs_table")
