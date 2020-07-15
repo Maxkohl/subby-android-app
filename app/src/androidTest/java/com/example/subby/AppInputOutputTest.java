@@ -43,7 +43,7 @@ public class AppInputOutputTest {
     }
 
     @Test
-    public void insertNewSubscription() {
+    public void createAndDeleteNewSubscription() {
         String[] myArray =
                 mActivityRule.getActivity().getResources()
                         .getStringArray(R.array.color_labels_array);
@@ -56,10 +56,15 @@ public class AppInputOutputTest {
         onData(is("Blue")).perform(click());
         onView(withId(R.id.saveSub)).perform(click());
         onView(withText("Test Subscription")).check(matches(withText("Test Subscription")));
+
+        onView(withText("Test Subscription")).perform(click());
+        onView(withId(R.id.deleteSubs)).perform(click());
+        onView(withText("OK")).inRoot(isDialog()).check(matches(isDisplayed())).perform(click());
+        onView(withText("Test Subscription")).check(doesNotExist());
     }
 
     @Test
-    public void insertAnotherNewSubscription() {
+    public void createAndSwipeSubscription() {
         String[] myArray =
                 mActivityRule.getActivity().getResources()
                         .getStringArray(R.array.color_labels_array);
@@ -72,18 +77,7 @@ public class AppInputOutputTest {
         onData(is("Yellow")).perform(click());
         onView(withId(R.id.saveSub)).perform(click());
         onView(withText("Other Subscription")).check(matches(withText("Other Subscription")));
-    }
 
-    @Test
-    public void deleteSubscription() {
-        onView(withText("Test Subscription")).perform(click());
-        onView(withId(R.id.deleteSubs)).perform(click());
-        onView(withText("OK")).inRoot(isDialog()).check(matches(isDisplayed())).perform(click());
-        onView(withText("Test Subscription")).check(doesNotExist());
-    }
-
-    @Test
-    public void swipeSubscription() {
         onView(withText("Other Subscription")).perform(swipeRight());
         onView(withText("Other Subscription")).check(doesNotExist());
     }
