@@ -22,11 +22,11 @@ public class PaidModelView extends AndroidViewModel {
     public PaidModelView(@NonNull Application application) {
         super(application);
         mRepository = new SubsRepository(application);
-        mAllSubs = mRepository.getAllSubs();
+//        mAllSubs = mRepository.getAllSubs();
     }
 
-    public LiveData<List<Subscription>> getAllSubs() {
-        return mAllSubs;
+    public LiveData<List<Subscription>> getAllSubs(boolean isPaid) {
+        return mRepository.getAllSubs(isPaid);
     }
 
     public void updateSubPaid(Subscription subscription) { mRepository.updateSubPaid(subscription);}

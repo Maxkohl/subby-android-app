@@ -42,7 +42,7 @@ public class PaidFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setAdapter(adapter);
 
-        paidModelView.getAllSubs().observe(getViewLifecycleOwner(), new Observer<List<Subscription>>() {
+        paidModelView.getAllSubs(true).observe(getViewLifecycleOwner(), new Observer<List<Subscription>>() {
             @Override
             public void onChanged(List<Subscription> subscriptions) {
                 adapter.setSubs(subscriptions);

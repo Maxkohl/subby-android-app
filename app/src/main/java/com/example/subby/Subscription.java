@@ -22,9 +22,9 @@ public class Subscription {
     private String color;
 
 //    private Date dueDate;
-    @ColumnInfo(name = "paid")
+    @NonNull
     private boolean isPaid ;
-    //TODO Due Date,background color?,icon member variable
+    //TODO Due Date,icon member variable
 
 
     public Subscription(@NonNull String subName, double price, String notes, String color) {

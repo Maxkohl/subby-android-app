@@ -66,11 +66,11 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
                     break;
             }
             //If subscription is PAID, will not show in recycler view
-            if (current.isPaid()) {
-                holder.subCard.setVisibility(View.GONE);
-            } else {
-                holder.subCard.setVisibility(View.VISIBLE);
-            }
+//            if (current.isPaid()) {
+//                holder.subCard.setVisibility(View.GONE);
+//            } else {
+//                holder.subCard.setVisibility(View.VISIBLE);
+//            }
         } else {
             holder.subName.setText(R.string.no_subscription_message);
         }

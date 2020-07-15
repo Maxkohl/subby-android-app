@@ -21,11 +21,11 @@ public class SubsViewModel extends AndroidViewModel {
     public SubsViewModel(@NonNull Application application) {
         super(application);
         mRepository = new SubsRepository(application);
-        mAllSubs = mRepository.getAllSubs();
+//        mAllSubs = mRepository.getAllSubs();
     }
 
-    public LiveData<List<Subscription>> getAllSubs() {
-        return mAllSubs;
+    public LiveData<List<Subscription>> getAllSubs(boolean isPaid) {
+        return mRepository.getAllSubs(isPaid);
     }
 
     public void insert(Subscription sub) {

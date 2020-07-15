@@ -55,7 +55,7 @@ public class SubsFragment extends Fragment {
         mTotalSubCost = root.findViewById(R.id.totalSubCost);
 
 
-        subsViewModel.getAllSubs().observe(getViewLifecycleOwner(),
+        subsViewModel.getAllSubs(false).observe(getViewLifecycleOwner(),
                 new Observer<List<Subscription>>() {
 
                     @Override

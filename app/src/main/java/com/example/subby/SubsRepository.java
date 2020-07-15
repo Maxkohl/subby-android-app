@@ -15,12 +15,11 @@ public class SubsRepository {
     public SubsRepository(Application application) {
         SubsRoomDatabase db = SubsRoomDatabase.getDatabase(application);
         mSubDao = db.subsDao();
-        mAllSubs = mSubDao.getAllUserSubs();
         mTotalCost = mSubDao.getTotalCost();
     }
 
-    public LiveData<List<Subscription>> getAllSubs() {
-        return mAllSubs;
+    public LiveData<List<Subscription>> getAllSubs(boolean isPaid) {
+        return mSubDao.getAllUserSubs(isPaid);
     }
 
     public void insert(Subscription sub) {
