@@ -22,8 +22,8 @@ public class Subscription {
     private String color;
 
 //    private Date dueDate;
-
-    private boolean isPaid;
+    @ColumnInfo(name = "paid")
+    private boolean isPaid ;
     //TODO Due Date,background color?,icon member variable
 
 
@@ -32,7 +32,7 @@ public class Subscription {
         this.price = price;
         this.notes = notes;
         this.color = color;
-//        this.isPaid = false;
+        this.isPaid = false;
     }
 
     public int getSubId() {
