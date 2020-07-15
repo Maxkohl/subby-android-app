@@ -1,19 +1,35 @@
 package com.example.subby.ui.paid;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class PaidModelView extends ViewModel {
+import com.example.subby.SubsRepository;
+import com.example.subby.Subscription;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public PaidModelView() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+public class PaidModelView extends AndroidViewModel {
+
+    private SubsRepository mRepository;
+    private LiveData<List<Subscription>> mAllSubs;
+
+
+    public PaidModelView(@NonNull Application application) {
+        super(application);
+        mRepository = new SubsRepository(application);
+        mAllSubs = mRepository.getAllSubs();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Subscription>> getAllSubs() {
+        return mAllSubs;
     }
+
+    public void updateSubPaid(Subscription subscription) { mRepository.updateSubPaid(subscription);}
+
+
 }

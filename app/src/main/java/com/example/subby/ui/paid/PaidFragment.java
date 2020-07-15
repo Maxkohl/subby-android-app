@@ -1,35 +1,54 @@
 package com.example.subby.ui.paid;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.subby.R;
+import com.example.subby.Subscription;
+import com.example.subby.ui.paid.PaidListAdapter;
+
+import java.util.List;
 
 public class PaidFragment extends Fragment {
 
     private PaidModelView paidModelView;
+    private Context context;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         paidModelView =
                 ViewModelProviders.of(this).get(PaidModelView.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_subscription);
-        paidModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        View root = inflater.inflate(R.layout.fragment_paid, container, false);
+
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerview_paid);
+        final PaidListAdapter adapter = new PaidListAdapter(context);
+        recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
+        recyclerView.setAdapter(adapter);
+
+        paidModelView.getAllSubs().observe(getViewLifecycleOwner(), new Observer<List<Subscription>>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onChanged(List<Subscription> subscriptions) {
+                adapter.setSubs(subscriptions);
             }
         });
+
+
         return root;
     }
 }

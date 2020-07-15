@@ -3,7 +3,6 @@ package com.example.subby.ui.subs;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.subby.R;
 import com.example.subby.SubsListAdapter;
 import com.example.subby.Subscription;
+import com.example.subby.ui.paid.PaidListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;

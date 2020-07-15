@@ -1,4 +1,4 @@
-package com.example.subby;
+package com.example.subby.ui.paid;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,32 +11,34 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.subby.R;
+import com.example.subby.Subscription;
 import com.example.subby.ui.subs.SubDetailsActivity;
 
 import java.util.List;
 import java.util.Locale;
 
-public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.SubsListAdapter.SubsViewHolder> {
+public class PaidListAdapter extends RecyclerView.Adapter<PaidListAdapter.PaidSubsViewHolder> {
 
     private LayoutInflater mInflator;
     private List<Subscription> mSubs;
     private Context mContext;
 
-    public SubsListAdapter(Context context) {
+    public PaidListAdapter(Context context) {
         mInflator = LayoutInflater.from(context);
         mContext = context;
     }
 
     @NonNull
     @Override
-    public com.example.subby.SubsListAdapter.SubsViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
-                                                                               int viewType) {
+    public PaidSubsViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
+                                                 int viewType) {
         View itemView = mInflator.inflate(R.layout.recyclerview_item, parent, false);
-        return new SubsViewHolder(itemView);
+        return new PaidSubsViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull com.example.subby.SubsListAdapter.SubsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PaidSubsViewHolder holder, int position) {
         if (mSubs != null) {
             Subscription current = mSubs.get(position);
             holder.subName.setText(current.getSubName());
@@ -65,8 +67,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
                     holder.subNotes.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
                     break;
             }
-            //If subscription is PAID, will not show in recycler view
-            if (current.isPaid()) {
+            if (!current.isPaid()) {
                 holder.subCard.setVisibility(View.GONE);
             } else {
                 holder.subCard.setVisibility(View.VISIBLE);
@@ -89,13 +90,13 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
         notifyDataSetChanged();
     }
 
-    class SubsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class PaidSubsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView subName;
         private final TextView subPrice;
         private final TextView subNotes;
         private final CardView subCard;
 
-        private SubsViewHolder(@NonNull View itemView) {
+        private PaidSubsViewHolder(@NonNull View itemView) {
             super(itemView);
             subName = itemView.findViewById(R.id.subName);
             subPrice = itemView.findViewById(R.id.subPrice);
