@@ -24,6 +24,7 @@ import com.example.subby.Subscription;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+import java.util.Locale;
 
 public class SubsFragment extends Fragment {
 
@@ -67,8 +68,7 @@ public class SubsFragment extends Fragment {
                 new Observer<Double>() {
                     @Override
                     public void onChanged(Double aDouble) {
-//                        mTotalSubCost.setText(aDouble.toString());
-                        mTotalSubCost.setText(String.format(String.valueOf(aDouble)));
+                        mTotalSubCost.setText(String.format(Locale.US,"$%.2f",aDouble));
                     }
                 });
 

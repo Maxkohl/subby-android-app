@@ -15,6 +15,7 @@ import com.example.subby.ui.subs.SubDetailsActivity;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsViewHolder> {
 
@@ -40,7 +41,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
         if (mSubs != null) {
             Subscription current = mSubs.get(position);
             holder.subName.setText(current.getSubName());
-            holder.subPrice.setText(String.format("$%.2f", current.getPrice()));
+            holder.subPrice.setText(String.format(Locale.US,"$%.2f", current.getPrice()));
             holder.subNotes.setText(current.getNotes());
             switch (current.getColor()) {
                 case "Red":
