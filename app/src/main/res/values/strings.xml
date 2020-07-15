@@ -24,7 +24,7 @@
         <item>Purple</item>
         <item>White</item>
     </string-array>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Settings</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
@@ -61,5 +61,7 @@
     <string name="sub_name_placeholder">Sub Name</string>
     <string name="price_placeholder">Price</string>
     <string name="notes_placeholder">Notes</string>
+    <string name="nav_paid_subs">Paid Subscriptions</string>
+    <string name="nav_settings">Settings</string>
 
 </resources>
