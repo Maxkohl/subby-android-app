@@ -16,13 +16,10 @@ import java.util.List;
 public class PaidModelView extends AndroidViewModel {
 
     private SubsRepository mRepository;
-    private LiveData<List<Subscription>> mAllSubs;
-
 
     public PaidModelView(@NonNull Application application) {
         super(application);
         mRepository = new SubsRepository(application);
-//        mAllSubs = mRepository.getAllSubs();
     }
 
     public LiveData<List<Subscription>> getAllSubs(boolean isPaid) {

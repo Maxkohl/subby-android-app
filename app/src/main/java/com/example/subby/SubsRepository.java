@@ -9,7 +9,6 @@ import java.util.List;
 
 public class SubsRepository {
     private SubsDao mSubDao;
-    private LiveData<List<Subscription>> mAllSubs;
     private LiveData<Double> mTotalCost;
 
     public SubsRepository(Application application) {

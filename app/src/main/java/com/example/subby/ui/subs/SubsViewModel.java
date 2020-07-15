@@ -16,7 +16,6 @@ import java.util.List;
 public class SubsViewModel extends AndroidViewModel {
 
     private SubsRepository mRepository;
-    private LiveData<List<Subscription>> mAllSubs;
 
     public SubsViewModel(@NonNull Application application) {
         super(application);
