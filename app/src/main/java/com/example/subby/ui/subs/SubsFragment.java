@@ -42,7 +42,6 @@ public class SubsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         //TODO mTotalSubCost is NULL figure out whyyyyy
-//        mTotalSubCost = getActivity().findViewById(R.id.totalSubCost);
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_subs, container, false);
@@ -51,6 +50,9 @@ public class SubsFragment extends Fragment {
         final SubsListAdapter adapter = new SubsListAdapter(context);
         recyclerView.setLayoutManager(new LinearLayoutManager(container.getContext()));
         recyclerView.setAdapter(adapter);
+
+        mTotalSubCost = root.findViewById(R.id.totalSubCost);
+
 
         subsViewModel.getAllSubs().observe(getViewLifecycleOwner(),
                 new Observer<List<Subscription>>() {
@@ -61,13 +63,14 @@ public class SubsFragment extends Fragment {
                     }
                 });
 
-//        subsViewModel.getTotalCost().observe(getViewLifecycleOwner(),
-//                new Observer<Double>() {
-//                    @Override
-//                    public void onChanged(Double aDouble) {
+        subsViewModel.getTotalCost().observe(getViewLifecycleOwner(),
+                new Observer<Double>() {
+                    @Override
+                    public void onChanged(Double aDouble) {
 //                        mTotalSubCost.setText(aDouble.toString());
-//                    }
-//                });
+                        mTotalSubCost.setText(String.format(String.valueOf(aDouble)));
+                    }
+                });
 
                 ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                         ItemTouchHelper.LEFT |
