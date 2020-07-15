@@ -72,7 +72,8 @@ public class SubsRepository {
         @Override
         protected Void doInBackground(Subscription... subscriptions) {
             Subscription current = subscriptions[0];
-            current.setPaid(true);
+            boolean isPaid = current.isPaid();
+            current.setPaid(!isPaid);
             mASyncTaskDao.updateSubPaid(current);
             return null;
         }
