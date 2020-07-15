@@ -67,11 +67,6 @@ public class PaidListAdapter extends RecyclerView.Adapter<PaidListAdapter.PaidSu
                     holder.subNotes.setTextColor(mInflator.getContext().getResources().getColor(R.color.Black));
                     break;
             }
-//            if (!current.isPaid()) {
-//                holder.subCard.setVisibility(View.GONE);
-//            } else {
-//                holder.subCard.setVisibility(View.VISIBLE);
-//            }
         } else {
             holder.subName.setText(R.string.no_subscription_message);
         }

@@ -21,7 +21,6 @@ public class SubsViewModel extends AndroidViewModel {
     public SubsViewModel(@NonNull Application application) {
         super(application);
         mRepository = new SubsRepository(application);
-//        mAllSubs = mRepository.getAllSubs();
     }
 
     public LiveData<List<Subscription>> getAllSubs(boolean isPaid) {
