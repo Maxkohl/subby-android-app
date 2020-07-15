@@ -57,7 +57,6 @@ public class SubsFragment extends Fragment {
 
         subsViewModel.getAllSubs(false).observe(getViewLifecycleOwner(),
                 new Observer<List<Subscription>>() {
-
                     @Override
                     public void onChanged(List<Subscription> subscriptions) {
                         adapter.setSubs(subscriptions);
@@ -68,7 +67,11 @@ public class SubsFragment extends Fragment {
                 new Observer<Double>() {
                     @Override
                     public void onChanged(Double aDouble) {
-                        mTotalSubCost.setText(String.format(Locale.US,"$%.2f",aDouble));
+                        if (aDouble != null) {
+                            mTotalSubCost.setText(String.format(Locale.US, "$%.2f", aDouble));
+                        } else {
+                            mTotalSubCost.setText("$0");
+                        }
                     }
                 });
 
