@@ -1,4 +1,4 @@
-package com.example.subby.ui.gallery;
+package com.example.subby.ui.paid;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.subby.R;
 
-public class GalleryFragment extends Fragment {
+public class PaidFragment extends Fragment {
 
-    private GalleryModelView galleryModelView;
+    private PaidModelView paidModelView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryModelView =
-                ViewModelProviders.of(this).get(GalleryModelView.class);
+        paidModelView =
+                ViewModelProviders.of(this).get(PaidModelView.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
         final TextView textView = root.findViewById(R.id.text_subscription);
-        galleryModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        paidModelView.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
