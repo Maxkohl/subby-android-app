@@ -23,7 +23,7 @@ public class Subscription {
 
 //    private Date dueDate;
 
-//    private boolean isSubscribed;
+    private boolean isPaid;
     //TODO Due Date,background color?,icon member variable
 
 
@@ -32,6 +32,7 @@ public class Subscription {
         this.price = price;
         this.notes = notes;
         this.color = color;
+//        this.isPaid = false;
     }
 
     public int getSubId() {
@@ -55,9 +56,13 @@ public class Subscription {
         return color;
     }
 
-    //    public boolean isSubscribed() {
-//        return isSubscribed;
-//    }
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
 
     public void setSubId(int id) {
         subId = id;

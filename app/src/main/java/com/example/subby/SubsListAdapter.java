@@ -40,6 +40,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<SubsListAdapter.SubsVi
     public void onBindViewHolder(@NonNull SubsListAdapter.SubsViewHolder holder, int position) {
         if (mSubs != null) {
             Subscription current = mSubs.get(position);
+//            if (!current.isPaid()) {}
             holder.subName.setText(current.getSubName());
             holder.subPrice.setText(String.format(Locale.US,"$%.2f", current.getPrice()));
             holder.subNotes.setText(current.getNotes());
