@@ -67,5 +67,7 @@
     <string name="due_date">Due Date</string>
     <string name="color_prompt">Choose a Color</string>
     <string name="new_sub_header">Enter a New Subscription</string>
+    <string name="turn_notifications_on">Turn Notifications On</string>
+    <string name="due_date_placeholder">Due Date Placeholder</string>
 
 </resources>
