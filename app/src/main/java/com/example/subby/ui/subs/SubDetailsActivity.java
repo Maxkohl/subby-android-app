@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.subby.MainActivity;
 import com.example.subby.R;
@@ -22,6 +23,7 @@ public class SubDetailsActivity extends AppCompatActivity {
     private TextView subNote;
     private RelativeLayout headerLayout;
     private SubsViewModel subsViewModel;
+    private ToggleButton notifyToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         subPrice = findViewById(R.id.subPriceDetails);
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
+
 
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);

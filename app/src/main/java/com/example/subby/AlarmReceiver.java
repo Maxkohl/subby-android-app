@@ -10,7 +10,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     private NotificationManager mNotificationManager;
     private static final int NOTIFICATION_ID = 0;
 
-    
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
