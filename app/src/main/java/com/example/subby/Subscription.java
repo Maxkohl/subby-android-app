@@ -21,10 +21,10 @@ public class Subscription {
     private String notes;
     private String color;
 
-//    private Date dueDate;
     @NonNull
     private boolean isPaid ;
-    //TODO Due Date,icon member variable
+
+    private Integer dueDate;
 
 
     public Subscription(@NonNull String subName, double price, String notes, String color) {
@@ -66,5 +66,13 @@ public class Subscription {
 
     public void setSubId(int id) {
         subId = id;
+    }
+
+    public Integer getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Integer dueDate) {
+        this.dueDate = dueDate;
     }
 }
