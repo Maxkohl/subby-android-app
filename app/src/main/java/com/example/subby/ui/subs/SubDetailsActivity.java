@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ public class SubDetailsActivity extends AppCompatActivity {
     private TextView subNote;
     private RelativeLayout headerLayout;
     private SubsViewModel subsViewModel;
-    private Switch notifyToggle;
+    private Switch notifySwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         subPrice = findViewById(R.id.subPriceDetails);
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
-        notifyToggle = findViewById(R.id.notify_toggle);
+        notifySwitch = findViewById(R.id.notify_switch);
 
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
@@ -66,6 +67,19 @@ public class SubDetailsActivity extends AppCompatActivity {
                 subPrice.setTextColor(getResources().getColor(R.color.Black));
                 break;
         }
+
+        notifySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                String toastMessage;
+                if (isChecked) {
+                    toastMessage = "Notification On";
+                } else {
+                    toastMessage = "Notification Off";
+                }
+                Toast.makeText(SubDetailsActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
