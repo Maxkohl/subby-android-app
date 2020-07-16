@@ -24,7 +24,6 @@ public interface SubsDao {
     @Query("DELETE FROM subs_table WHERE name = :name")
     void deleteSubscription(String name);
 
-    //TODO Add WHERE paid = 'false'
     @Query("SELECT SUM(price) FROM subs_table")
     LiveData<Double> getTotalCost();
 

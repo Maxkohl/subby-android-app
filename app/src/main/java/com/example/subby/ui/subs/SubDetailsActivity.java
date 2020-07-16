@@ -95,7 +95,6 @@ public class SubDetailsActivity extends AppCompatActivity {
         notifyIntent.putExtra("subName", subName.getText());
         notifyIntent.putExtra("id", NOTIFICATION_ID);
 
-        //TODO If subscription clicked, left, then clicked again this will turn on for some reason
         boolean notifyOn = (PendingIntent.getBroadcast(this, NOTIFICATION_ID, notifyIntent,
                 PendingIntent.FLAG_NO_CREATE) != null);
         notifySwitch.setChecked(notifyOn);

@@ -39,7 +39,6 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (SubsRoomDatabase.class) {
                 if (INSTANCE == null) {
-                    //TODO Change migration strategy?
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             SubsRoomDatabase.class, "subs_database").fallbackToDestructiveMigration().addCallback(sRoomDatabaseCallback).build();
                 }
@@ -52,22 +51,7 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
             super.onOpen(db);
-            new PopulateDbAsync(INSTANCE).execute();
         }
     };
 
-    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-        private final SubsDao mDao;
-
-        public PopulateDbAsync(SubsRoomDatabase db) {
-            mDao = db.subsDao();
-        }
-
-        @Override
-        protected Void doInBackground(Void... params) {
-            //TODO mDao.deleteAll() was here but I need data to be persistent
-//            mDao.deleteAllUserSubs();
-            return null;
-        }
-    }
 }

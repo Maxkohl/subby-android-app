@@ -43,7 +43,6 @@ public class SubsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        //TODO mTotalSubCost is NULL figure out whyyyyy
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_subs, container, false);
@@ -88,7 +87,6 @@ public class SubsFragment extends Fragment {
 
                     @Override
                     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                        //TODO Find way to DELETE SUB with name
                         int position = viewHolder.getAdapterPosition();
                         Subscription currentSub = adapter.getSubAtPosition(position);
                         subsViewModel.updateSubPaid(currentSub);
