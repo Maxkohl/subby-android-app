@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -23,7 +24,7 @@ public class SubDetailsActivity extends AppCompatActivity {
     private TextView subNote;
     private RelativeLayout headerLayout;
     private SubsViewModel subsViewModel;
-    private ToggleButton notifyToggle;
+    private Switch notifyToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         subPrice = findViewById(R.id.subPriceDetails);
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
-
+        notifyToggle = findViewById(R.id.notify_toggle);
 
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
