@@ -5,40 +5,74 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.subs.AddSubActivity">
+
+    <TextView
+        android:id="@+id/new_sub_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_sub_header"
+        android:textColor="@color/Black"
+        style="@style/TextAppearance.AppCompat.Display2"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
     <EditText
         android:id="@+id/addSubName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="71dp"
+        android:ellipsize="start"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/standard_margin"
         android:hint="@string/enter_sub_name_hint"
         android:inputType="textShortMessage"
-        android:layout_gravity="center_horizontal"
-        />
+        android:singleLine="true"/>
+
     <EditText
         android:id="@+id/addSubPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="71dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/standard_margin"
         android:hint="@string/enter_sub_price_hint"
         android:inputType="numberDecimal"
-        android:layout_gravity="center_horizontal"
-
+        android:singleLine="true"
         />
 
     <EditText
         android:id="@+id/addSubNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="317dp"
+        android:layout_height="71dp"
         android:hint="@string/enter_sub_note_hint"
         android:inputType="textLongMessage"
         android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/standard_margin"
         />
 
-    <Spinner
-        android:id="@+id/addSubColor"
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
 
-        />
+        <TextView
+            android:id="@+id/color_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/color_prompt"
+            android:textColor="@color/Black"
+            android:textStyle="bold"
+            android:textSize="@dimen/large_text"
+            />
+
+        <Spinner
+            android:id="@+id/addSubColor"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <Button
         android:id="@+id/addSubDate"
@@ -47,13 +81,16 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/standard_margin"
         android:text="@string/pick_date_bttn"
+        android:textSize="@dimen/large_text"
         android:onClick="showDatePicker"/>
 
     <Button
         android:id="@+id/saveSub"
         android:text="@string/save_subscription_bttn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="returnSubscription"/>
+        android:onClick="returnSubscription"
+        android:textSize="@dimen/large_text"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
