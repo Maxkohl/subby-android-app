@@ -79,10 +79,10 @@ public class Subscription {
     public String getDueDateString() {
         long unixSeconds = dueDate;
         Date date = new java.util.Date(unixSeconds*1000L);
-        SimpleDateFormat sdf = new java.text.SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd");
 
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
-        String formattedDate = sdf.format(date);
+        String formattedDate = "Day Due: " + sdf.format(date);
         System.out.println(formattedDate);
         return formattedDate;
     }
