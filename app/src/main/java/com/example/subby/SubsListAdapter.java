@@ -102,7 +102,9 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
         @Override
         public void onClick(View view) {
             Subscription current = mSubs.get(getAdapterPosition());
+            int subId = current.getSubId();
             Intent intent = new Intent(mContext, SubDetailsActivity.class);
+            intent.putExtra("id", subId);
             intent.putExtra("name", current.getSubName());
             intent.putExtra("price", current.getPrice());
             intent.putExtra("notes", current.getNotes());

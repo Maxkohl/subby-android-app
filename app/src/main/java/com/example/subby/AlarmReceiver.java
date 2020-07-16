@@ -13,19 +13,18 @@ import com.example.subby.ui.subs.SubDetailsActivity;
 
 public class AlarmReceiver extends BroadcastReceiver {
     private NotificationManager mNotificationManager;
-    private static final int NOTIFICATION_ID = 0;
+    private static int NOTIFICATION_ID;
     private static final String PRIMARY_CHANNEL_ID =
             "primary_notification_channel";
 
     private String mSubname;
-
-
 
     @Override
     public void onReceive(Context context, Intent intent) {
         mNotificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
         mSubname = intent.getStringExtra("subName");
+        NOTIFICATION_ID = intent.getIntExtra("id",0);
         deliverNotification(context);
 
     }

@@ -1,5 +1,6 @@
 package com.example.subby.ui.subs;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -30,7 +31,7 @@ import com.example.subby.R;
 
 public class SubDetailsActivity extends AppCompatActivity {
 
-    private static final int NOTIFICATION_ID = 0;
+    private static int NOTIFICATION_ID;
     private static final String PRIMARY_CHANNEL_ID =
             "primary_notification_channel";
 
@@ -58,6 +59,7 @@ public class SubDetailsActivity extends AppCompatActivity {
                 ViewModelProviders.of(this).get(SubsViewModel.class);
 
         Intent intent = getIntent();
+        NOTIFICATION_ID = intent.getIntExtra("id",0);
         subName.setText(intent.getStringExtra("name"));
         subPrice.setText(intent.getStringExtra("price"));
         subNote.setText(intent.getStringExtra("notes"));
@@ -88,21 +90,24 @@ public class SubDetailsActivity extends AppCompatActivity {
 
         Intent notifyIntent = new Intent(this, AlarmReceiver.class);
         notifyIntent.putExtra("subName", subName.getText());
+        notifyIntent.putExtra("id", NOTIFICATION_ID);
+        boolean notifyOn = (PendingIntent.getBroadcast(this, NOTIFICATION_ID, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT) != null);
+        notifySwitch.setChecked(notifyOn);
         final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID,
                 notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         final AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
 
         notifySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 String toastMessage;
                 if (isChecked) {
-                    alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                            SystemClock.elapsedRealtime(), AlarmManager.INTERVAL_DAY * 30, notifyPendingIntent);
+                    //TODO Change back to Not Realtime after testing
+                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), notifyPendingIntent);
                             toastMessage = "Notification On";
                 } else {
-                    //TODO Change this to cancel NOTIFICATION_ID that's set by ID from table
-                    mNotificationManager.cancelAll();
+                    mNotificationManager.cancel(NOTIFICATION_ID);
                     if (alarmManager != null) {
                         alarmManager.cancel(notifyPendingIntent);
                     }
