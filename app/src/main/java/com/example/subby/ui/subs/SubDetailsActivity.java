@@ -4,8 +4,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -20,12 +24,17 @@ import com.example.subby.R;
 
 public class SubDetailsActivity extends AppCompatActivity {
 
+    private static final int NOTIFICATION_ID = 0;
+    private static final String PRIMARY_CHANNEL_ID =
+            "primary_notification_channel";
+
     private TextView subName;
     private TextView subPrice;
     private TextView subNote;
     private RelativeLayout headerLayout;
     private SubsViewModel subsViewModel;
     private Switch notifySwitch;
+    private NotificationManager mNotificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +46,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
         notifySwitch = findViewById(R.id.notify_switch);
+        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
@@ -101,12 +111,27 @@ public class SubDetailsActivity extends AppCompatActivity {
         });
         builder.setNegativeButton(R.string.cancel_alert_title,
                 new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Canceled delete subscription",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getApplicationContext(), "Canceled delete subscription",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
         builder.show();
+    }
+
+    public void createNotificationChannel() {
+        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(PRIMARY_CHANNEL_ID,
+                    "Subscription Notification", NotificationManager.IMPORTANCE_HIGH);
+
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.GREEN);
+            notificationChannel.enableVibration(true);
+            notificationChannel.setDescription("Notifies whenever payment of a monthly " +
+                    "subscription is due");
+            mNotificationManager.createNotificationChannel(notificationChannel);
+        }
     }
 }
