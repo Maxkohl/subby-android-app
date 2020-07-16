@@ -44,5 +44,16 @@
         style="@style/TextAppearance.AppCompat.Subhead"
         />
 
+    <TextView
+        android:id="@+id/subDueDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subPrice"
+        android:layout_alignParentRight="true"
+        android:text="@string/due_date"
+        android:padding="8dp"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
     </androidx.cardview.widget.CardView>

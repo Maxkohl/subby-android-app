@@ -28,7 +28,7 @@ public class AddSubActivity extends AppCompatActivity implements AdapterView.OnI
     private EditText mSubPrice;
     private EditText mSubNote;
 
-    private Date subDueDate;
+    private long mSubDueDate;
     private String mSubColor;
 
 
@@ -67,6 +67,7 @@ public class AddSubActivity extends AppCompatActivity implements AdapterView.OnI
         replyIntent.putExtra("note", subNote);
         replyIntent.putExtra("isSubscribed", true);
         replyIntent.putExtra("color", mSubColor);
+        replyIntent.putExtra("dueDate", mSubDueDate);
         setResult(RESULT_OK, replyIntent);
         finish();
     }
@@ -82,14 +83,14 @@ public class AddSubActivity extends AppCompatActivity implements AdapterView.OnI
         String day_string = Integer.toString(day);
         String date_message = getString(R.string.monthly_due_date) + day_string;
 
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
         try {
-            subDueDate = format.parse(day_string + "-" + month_string + "-" + year_string);
+            Date stringFormatted = format.parse(year_string + "-" + month_string + "-" + day_string);
+            mSubDueDate = stringFormatted.getTime();
         } catch (ParseException e) {
             Log.d(TAG, getString(R.string.data_parsing_exception_message));
             e.printStackTrace();
         }
-
 
         Toast.makeText(this, date_message, Toast.LENGTH_SHORT).show();
     }

@@ -115,7 +115,7 @@ public class SubsFragment extends Fragment {
             //TODO Add condition to check that resultCode is RESULT_OK here
             Subscription newSub = new Subscription(data.getStringExtra("name"),
                     Double.parseDouble(data.getStringExtra("price")), data.getStringExtra("note")
-                    , data.getStringExtra("color"));
+                    , data.getStringExtra("color"), data.getLongExtra("dueDate", 0));
             subsViewModel.insert(newSub);
         }
     }

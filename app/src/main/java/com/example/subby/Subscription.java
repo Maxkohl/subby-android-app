@@ -24,15 +24,17 @@ public class Subscription {
     @NonNull
     private boolean isPaid ;
 
-    private Integer dueDate;
+    @NonNull
+    private long dueDate;
 
 
-    public Subscription(@NonNull String subName, double price, String notes, String color) {
+    public Subscription(@NonNull String subName, double price, String notes, String color, long dueDate) {
         this.subName = subName;
         this.price = price;
         this.notes = notes;
         this.color = color;
         this.isPaid = false;
+        this.dueDate = dueDate;
     }
 
     public int getSubId() {
@@ -68,11 +70,11 @@ public class Subscription {
         subId = id;
     }
 
-    public Integer getDueDate() {
+    public long getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Integer dueDate) {
+    public void setDueDate(long dueDate) {
         this.dueDate = dueDate;
     }
 }
