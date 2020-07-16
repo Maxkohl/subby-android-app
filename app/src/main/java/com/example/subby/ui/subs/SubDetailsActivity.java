@@ -20,6 +20,7 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ public class SubDetailsActivity extends AppCompatActivity {
     private SubsViewModel subsViewModel;
     private Switch notifySwitch;
     private NotificationManager mNotificationManager;
+    private ScrollView detailsScrollView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class SubDetailsActivity extends AppCompatActivity {
         subPrice = findViewById(R.id.subPriceDetails);
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
+        detailsScrollView = findViewById(R.id.details_scrollview);
+
         notifySwitch = findViewById(R.id.notify_switch);
 
         subsViewModel =
