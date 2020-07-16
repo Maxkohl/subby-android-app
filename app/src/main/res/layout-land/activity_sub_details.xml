@@ -34,7 +34,9 @@
             android:padding="8dp"
             android:paddingBottom="16dp"
             android:text="Sub Price"
-            android:textColor="@color/Black" />
+            android:textColor="@color/Black"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:textStyle="bold"/>
     </RelativeLayout>
 
     <ScrollView
