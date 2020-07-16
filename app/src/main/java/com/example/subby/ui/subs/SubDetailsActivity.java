@@ -53,13 +53,12 @@ public class SubDetailsActivity extends AppCompatActivity {
         subNote = findViewById(R.id.subNoteDetails);
         headerLayout = findViewById(R.id.header);
         notifySwitch = findViewById(R.id.notify_switch);
-        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         subsViewModel =
                 ViewModelProviders.of(this).get(SubsViewModel.class);
 
         Intent intent = getIntent();
-        NOTIFICATION_ID = intent.getIntExtra("id",0);
+        NOTIFICATION_ID = intent.getIntExtra("id", 0);
         subName.setText(intent.getStringExtra("name"));
         subPrice.setText(intent.getStringExtra("price"));
         subNote.setText(intent.getStringExtra("notes"));
@@ -88,29 +87,35 @@ public class SubDetailsActivity extends AppCompatActivity {
 
         createNotificationChannel();
 
-        Intent notifyIntent = new Intent(this, AlarmReceiver.class);
+        final Intent notifyIntent = new Intent(this, AlarmReceiver.class);
         notifyIntent.putExtra("subName", subName.getText());
         notifyIntent.putExtra("id", NOTIFICATION_ID);
-        boolean notifyOn = (PendingIntent.getBroadcast(this, NOTIFICATION_ID, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT) != null);
+
+        //TODO If subscription clicked, left, then clicked again this will turn on for some reason
+        boolean notifyOn = (PendingIntent.getBroadcast(this, NOTIFICATION_ID, notifyIntent,
+                PendingIntent.FLAG_NO_CREATE) != null);
         notifySwitch.setChecked(notifyOn);
-        final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID,
-                notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        final AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+        final AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
         notifySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 String toastMessage;
+                final PendingIntent notifyPendingIntent =
+                        PendingIntent.getBroadcast(getApplicationContext(), NOTIFICATION_ID,
+                        notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
                 if (isChecked) {
                     //TODO Change back to Not Realtime after testing
-                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), notifyPendingIntent);
-                            toastMessage = "Notification On";
+                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                            SystemClock.elapsedRealtime(), notifyPendingIntent);
+                    toastMessage = "Notification On";
                 } else {
                     mNotificationManager.cancel(NOTIFICATION_ID);
                     if (alarmManager != null) {
                         alarmManager.cancel(notifyPendingIntent);
                     }
+                    notifyPendingIntent.cancel();
                     toastMessage = "Notification Off";
                 }
                 Toast.makeText(SubDetailsActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
