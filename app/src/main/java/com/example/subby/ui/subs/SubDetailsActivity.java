@@ -87,6 +87,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         createNotificationChannel();
 
         Intent notifyIntent = new Intent(this, AlarmReceiver.class);
+        notifyIntent.putExtra("subName", subName.getText());
         final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID,
                 notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         final AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
@@ -102,6 +103,9 @@ public class SubDetailsActivity extends AppCompatActivity {
                 } else {
                     //TODO Change this to cancel NOTIFICATION_ID that's set by ID from table
                     mNotificationManager.cancelAll();
+                    if (alarmManager != null) {
+                        alarmManager.cancel(notifyPendingIntent);
+                    }
                     toastMessage = "Notification Off";
                 }
                 Toast.makeText(SubDetailsActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
