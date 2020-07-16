@@ -5,7 +5,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Entity(tableName = "subs_table")
 public class Subscription {
@@ -74,7 +76,14 @@ public class Subscription {
         return dueDate;
     }
 
-    public void setDueDate(long dueDate) {
-        this.dueDate = dueDate;
+    public String getDueDateString() {
+        long unixSeconds = dueDate;
+        Date date = new java.util.Date(unixSeconds*1000L);
+        SimpleDateFormat sdf = new java.text.SimpleDateFormat("MM-dd-yyyy");
+
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String formattedDate = sdf.format(date);
+        System.out.println(formattedDate);
+        return formattedDate;
     }
 }

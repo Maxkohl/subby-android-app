@@ -42,6 +42,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
             holder.subName.setText(current.getSubName());
             holder.subPrice.setText(String.format(Locale.US, "$%.2f", current.getPrice()));
             holder.subNotes.setText(current.getNotes());
+            holder.subDueDate.setText(current.getDueDateString());
             switch (current.getColor()) {
                 case "Red":
                     holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Red));
@@ -87,6 +88,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
         private final TextView subName;
         private final TextView subPrice;
         private final TextView subNotes;
+        private final TextView subDueDate;
         private final CardView subCard;
 
         private SubsViewHolder(@NonNull View itemView) {
@@ -95,6 +97,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
             subPrice = itemView.findViewById(R.id.subPrice);
             subNotes = itemView.findViewById(R.id.subNotes);
             subCard = itemView.findViewById(R.id.subCard);
+            subDueDate = itemView.findViewById(R.id.subDueDate);
 
             itemView.setOnClickListener(this);
         }
@@ -109,6 +112,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
             intent.putExtra("price", current.getPrice());
             intent.putExtra("notes", current.getNotes());
             intent.putExtra("color", current.getColor());
+//            intent.putExtra("dueDate"), current.getDueDate();
             mContext.startActivity(intent);
         }
     }

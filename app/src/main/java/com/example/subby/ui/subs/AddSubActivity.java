@@ -79,14 +79,15 @@ public class AddSubActivity extends AppCompatActivity implements AdapterView.OnI
 
     public void processDatePickerResult(int year, int month, int day) {
         String year_string = Integer.toString(year);
-        String month_string = Integer.toString(month);
+        int correctedMonth = month + 1;
+        String month_string = Integer.toString(correctedMonth);
         String day_string = Integer.toString(day);
-        String date_message = getString(R.string.monthly_due_date) + day_string;
+        String date_message =  month_string + "/" + day_string + "/" + year_string;
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date stringFormatted = format.parse(year_string + "-" + month_string + "-" + day_string);
-            mSubDueDate = stringFormatted.getTime();
+            mSubDueDate = stringFormatted.getTime() / 1000;
         } catch (ParseException e) {
             Log.d(TAG, getString(R.string.data_parsing_exception_message));
             e.printStackTrace();
