@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_subby_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
         <activity
             android:name=".ui.subs.SubDetailsActivity"
             android:parentActivityName=".MainActivity" />
