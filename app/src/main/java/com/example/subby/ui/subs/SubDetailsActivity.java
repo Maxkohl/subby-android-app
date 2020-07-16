@@ -44,6 +44,7 @@ public class SubDetailsActivity extends AppCompatActivity {
     private Switch notifySwitch;
     private NotificationManager mNotificationManager;
     private ScrollView detailsScrollView;
+    private TextView subDueDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         subName = findViewById(R.id.subNameDetails);
         subPrice = findViewById(R.id.subPriceDetails);
         subNote = findViewById(R.id.subNoteDetails);
+        subDueDate = findViewById(R.id.subDueDateDetails);
         headerLayout = findViewById(R.id.header);
         detailsScrollView = findViewById(R.id.details_scrollview);
 
@@ -66,6 +68,7 @@ public class SubDetailsActivity extends AppCompatActivity {
         subName.setText(intent.getStringExtra("name"));
         subPrice.setText(intent.getStringExtra("price"));
         subNote.setText(intent.getStringExtra("notes"));
+        subDueDate.setText(intent.getStringExtra("dueDate"));
         switch (intent.getStringExtra("color")) {
             case "Red":
                 headerLayout.setBackgroundColor(getResources().getColor(R.color.Red));

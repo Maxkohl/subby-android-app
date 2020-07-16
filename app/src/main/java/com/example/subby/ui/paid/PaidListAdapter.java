@@ -108,9 +108,10 @@ public class PaidListAdapter extends RecyclerView.Adapter<PaidListAdapter.PaidSu
             Intent intent = new Intent(mContext, SubDetailsActivity.class);
             intent.putExtra("id", subId);
             intent.putExtra("name", current.getSubName());
-            intent.putExtra("price", current.getPrice());
+            intent.putExtra("price", String.format(Locale.US, "$%.2f", current.getPrice()));
             intent.putExtra("notes", current.getNotes());
             intent.putExtra("color", current.getColor());
+            intent.putExtra("dueDate", current.getDueDateString());
             mContext.startActivity(intent);
         }
     }
