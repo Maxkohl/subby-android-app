@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,6 +15,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.subby.AlarmReceiver;
 import com.example.subby.MainActivity;
 import com.example.subby.R;
 
@@ -83,13 +86,19 @@ public class SubDetailsActivity extends AppCompatActivity {
 
         createNotificationChannel();
 
+        Intent notifyIntent = new Intent(this, AlarmReceiver.class);
+        final PendingIntent notifyPendingIntent = PendingIntent.getBroadcast(this, NOTIFICATION_ID,
+                notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        final AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
         notifySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 String toastMessage;
                 if (isChecked) {
-                    deliverNotification(SubDetailsActivity.this);
-                    toastMessage = "Notification On";
+                    alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                            SystemClock.elapsedRealtime(), AlarmManager.INTERVAL_DAY * 30, notifyPendingIntent);
+                            toastMessage = "Notification On";
                 } else {
                     //TODO Change this to cancel NOTIFICATION_ID that's set by ID from table
                     mNotificationManager.cancelAll();
@@ -98,6 +107,7 @@ public class SubDetailsActivity extends AppCompatActivity {
                 Toast.makeText(SubDetailsActivity.this, toastMessage, Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 
@@ -143,15 +153,4 @@ public class SubDetailsActivity extends AppCompatActivity {
         }
     }
 
-    private void deliverNotification(Context context) {
-        Intent contentIntent = new Intent(context, SubDetailsActivity.class);
-        String subname = subName.getText().toString();
-        PendingIntent contentPendingIntent = PendingIntent.getActivity(context, NOTIFICATION_ID,
-                contentIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context,
-                PRIMARY_CHANNEL_ID).setSmallIcon(R.drawable.ic_baseline_money_24)
-                .setContentTitle("Subscription Alert").setContentText("Your " + subname + " payment" +
-                        " is due!").setContentIntent(contentPendingIntent).setPriority(NotificationCompat.PRIORITY_HIGH).setAutoCancel(true).setDefaults(NotificationCompat.DEFAULT_ALL);
-        mNotificationManager.notify(NOTIFICATION_ID, builder.build());
-    }
 }
