@@ -109,7 +109,7 @@ public class SubsListAdapter extends RecyclerView.Adapter<com.example.subby.Subs
             Intent intent = new Intent(mContext, SubDetailsActivity.class);
             intent.putExtra("id", subId);
             intent.putExtra("name", current.getSubName());
-            intent.putExtra("price", current.getPrice());
+            intent.putExtra("price", String.format(Locale.US, "$%.2f", current.getPrice()));
             intent.putExtra("notes", current.getNotes());
             intent.putExtra("color", current.getColor());
 //            intent.putExtra("dueDate"), current.getDueDate();
