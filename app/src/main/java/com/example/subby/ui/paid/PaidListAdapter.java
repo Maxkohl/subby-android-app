@@ -44,6 +44,7 @@ public class PaidListAdapter extends RecyclerView.Adapter<PaidListAdapter.PaidSu
             holder.subName.setText(current.getSubName());
             holder.subPrice.setText(String.format(Locale.US, "$%.2f", current.getPrice()));
             holder.subNotes.setText(current.getNotes());
+            holder.subDueDate.setText(current.getDueDateString());
             switch (current.getColor()) {
                 case "Red":
                     holder.subCard.setCardBackgroundColor(mInflator.getContext().getResources().getColor(R.color.Red));
@@ -90,6 +91,7 @@ public class PaidListAdapter extends RecyclerView.Adapter<PaidListAdapter.PaidSu
         private final TextView subPrice;
         private final TextView subNotes;
         private final CardView subCard;
+        private final TextView subDueDate;
 
         private PaidSubsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -97,6 +99,7 @@ public class PaidListAdapter extends RecyclerView.Adapter<PaidListAdapter.PaidSu
             subPrice = itemView.findViewById(R.id.subPrice);
             subNotes = itemView.findViewById(R.id.subNotes);
             subCard = itemView.findViewById(R.id.subCard);
+            subDueDate = itemView.findViewById(R.id.subDueDate);
 
             itemView.setOnClickListener(this);
         }
