@@ -40,18 +40,11 @@ public abstract class SubsRoomDatabase extends RoomDatabase {
             synchronized (SubsRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            SubsRoomDatabase.class, "subs_database").fallbackToDestructiveMigration().addCallback(sRoomDatabaseCallback).build();
+                            SubsRoomDatabase.class, "subs_database").fallbackToDestructiveMigration().build();
                 }
             }
         }
         return INSTANCE;
     }
-
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-        @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
-        }
-    };
 
 }
